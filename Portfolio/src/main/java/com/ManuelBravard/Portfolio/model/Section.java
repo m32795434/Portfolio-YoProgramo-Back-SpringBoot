@@ -1,11 +1,18 @@
 package com.ManuelBravard.Portfolio.model;
 
 import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Setter
 @Getter
+@Entity
 public class Section {
+    @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String imgMobile;
     private String imgDesktop;
