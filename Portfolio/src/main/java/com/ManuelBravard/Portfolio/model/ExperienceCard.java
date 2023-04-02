@@ -26,6 +26,9 @@ public class ExperienceCard {
     private String phEn;
     private String sectionId;
 
+    public ExperienceCard() {
+    }
+
     public ExperienceCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
             String phEn, String sectionId) {

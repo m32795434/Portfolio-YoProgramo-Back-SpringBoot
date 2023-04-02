@@ -17,6 +17,9 @@ public class HomeCard {
     private String es;
     private String sectionId;
 
+    public HomeCard() {
+    }
+
     public HomeCard(String id, String en, String es, String sectionId) {
         this.id = id;
         this.en = en;

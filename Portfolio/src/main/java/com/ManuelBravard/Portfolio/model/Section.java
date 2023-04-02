@@ -20,6 +20,9 @@ public class Section {
     private String en;
     private String es;
 
+    public Section() {
+    }
+
     public Section(String id, String imgMobile, String imgDesktop, String en, String es) {
         this.id = id;
         this.imgMobile = imgMobile;

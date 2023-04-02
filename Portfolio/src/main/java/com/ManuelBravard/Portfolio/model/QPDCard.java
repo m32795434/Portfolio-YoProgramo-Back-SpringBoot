@@ -27,6 +27,9 @@ public class QPDCard {
     private String h2Es;
     private String sectionId;
 
+    public QPDCard() {
+    }
+
     public QPDCard(String id, String imgSrc, String imgAlt, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
             String phEn, String h2En, String h2Es, String sectionId) {

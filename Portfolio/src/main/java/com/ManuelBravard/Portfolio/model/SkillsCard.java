@@ -21,6 +21,9 @@ public class SkillsCard {
     private String outStrokeColor;
     private String sectionId;
 
+    public SkillsCard() {
+    }
+
     public SkillsCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int value, String bkColor,
             String outStrokeColor, String sectionId) {
         this.id = id;
