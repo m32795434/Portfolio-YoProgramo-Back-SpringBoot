@@ -16,25 +16,21 @@ public class SectionService implements ISectionService {
 
     @Override
     public List<Section> returnSections() {
-        // TODO Auto-generated method stub
         return secRepo.findAll();
     }
 
     @Override
     public void saveSection(Section sec) {
-        // TODO Auto-generated method stub
         secRepo.save(sec);
     }
 
     @Override
     public void deleteSection(String id) {
-        // TODO Auto-generated method stub
         secRepo.deleteById(id);
     }
 
     @Override
     public Section returnSection(String id) {
-        // TODO Auto-generated method stub
         return secRepo.findById(id).orElse(null);
     }
 
