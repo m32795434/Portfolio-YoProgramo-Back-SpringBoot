@@ -1,19 +1,19 @@
 package com.ManuelBravard.Portfolio.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.repository.SectionRepository;
 
+@Service
 public class SectionService implements ISectionService {
 
     @Autowired
     public SectionRepository secRepo;
 
-    // 1.23.34
     @Override
     public List<Section> returnSections() {
         // TODO Auto-generated method stub
@@ -21,7 +21,7 @@ public class SectionService implements ISectionService {
     }
 
     @Override
-    public void addSection(Section sec) {
+    public void saveSection(Section sec) {
         // TODO Auto-generated method stub
         secRepo.save(sec);
     }
@@ -33,9 +33,9 @@ public class SectionService implements ISectionService {
     }
 
     @Override
-    public Optional<Section> returnSection(String id) {
+    public Section returnSection(String id) {
         // TODO Auto-generated method stub
-        return secRepo.findById(id);
+        return secRepo.findById(id).orElse(null);
     }
-    // 1.29
+
 }
