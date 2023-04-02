@@ -1,6 +1,7 @@
 package com.ManuelBravard.Portfolio.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "skillscard")
 public class SkillsCard {
+    @Id
     private String id;
     private String imgSrc;
     private String imgAltEs;
@@ -17,9 +19,10 @@ public class SkillsCard {
     private int value;
     private String bkColor;
     private String outStrokeColor;
+    private String sectionId;
 
     public SkillsCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int value, String bkColor,
-            String outStrokeColor) {
+            String outStrokeColor, String sectionId) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEs = imgAltEs;
@@ -27,5 +30,6 @@ public class SkillsCard {
         this.value = value;
         this.bkColor = bkColor;
         this.outStrokeColor = outStrokeColor;
+        this.sectionId = sectionId;
     }
 }

@@ -1,6 +1,7 @@
 package com.ManuelBravard.Portfolio.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "experiencecard")
 public class ExperienceCard {
+    @Id
     private String id;
     private String imgSrc;
     private String imgAltEs;
@@ -22,10 +24,11 @@ public class ExperienceCard {
     private int endDateDay;
     private String phEs;
     private String phEn;
+    private String sectionId;
 
     public ExperienceCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
-            String phEn) {
+            String phEn, String sectionId) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEs = imgAltEs;
@@ -38,5 +41,6 @@ public class ExperienceCard {
         this.endDateDay = endDateDay;
         this.phEs = phEs;
         this.phEn = phEn;
+        this.sectionId = sectionId;
     }
 }
