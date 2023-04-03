@@ -32,26 +32,24 @@ public class CardService implements ICardService {
     }
 
     @Override
+    public ExperienceCard returnExperienceCard(String id) {
+        return experienceRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void saveExperienceCard(ExperienceCard card) {
+        experienceRepo.save(card);
+    }
+
+    @Override
+    public void deleteExperienceCard(String id) {
+        experienceRepo.deleteById(id);
+    }
+
+    @Override
     public List<HomeCard> returnAllHomeCards() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'returnHomeCards'");
-    }
-
-    @Override
-    public List<QPDCard> returnAllQPDCards() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCards'");
-    }
-
-    @Override
-    public List<SkillsCard> returnAllSkillsCards() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnSkillsCards'");
-    }
-
-    @Override
-    public ExperienceCard returnExperienceCard(String id) {
-        return experienceRepo.findById(id).orElse(null);
     }
 
     @Override
@@ -61,43 +59,9 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public QPDCard returnQPDCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCard'");
-    }
-
-    @Override
-    public ExperienceCard returnSkillsCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnSkillsCard'");
-    }
-
-    @Override
-    public void saveExperienceCard(ExperienceCard card) {
-        experienceRepo.save(card);
-    }
-
-    @Override
     public void saveHomeCard(HomeCard card) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveHomeCard'");
-    }
-
-    @Override
-    public void saveQPDCard(QPDCard card) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveQPDCard'");
-    }
-
-    @Override
-    public void saveSkillsCard(SkillsCard sec) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveSkillsCard'");
-    }
-
-    @Override
-    public void deleteExperienceCard(String id) {
-        experienceRepo.deleteById(id);
     }
 
     @Override
@@ -107,9 +71,45 @@ public class CardService implements ICardService {
     }
 
     @Override
+    public List<QPDCard> returnAllQPDCards() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCards'");
+    }
+
+    @Override
+    public QPDCard returnQPDCard(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCard'");
+    }
+
+    @Override
+    public void saveQPDCard(QPDCard card) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveQPDCard'");
+    }
+
+    @Override
     public void deleteQPDCard(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteQPDCard'");
+    }
+
+    @Override
+    public ExperienceCard returnSkillsCard(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'returnSkillsCard'");
+    }
+
+    @Override
+    public List<SkillsCard> returnAllSkillsCards() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'returnSkillsCards'");
+    }
+
+    @Override
+    public void saveSkillsCard(SkillsCard sec) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveSkillsCard'");
     }
 
     @Override

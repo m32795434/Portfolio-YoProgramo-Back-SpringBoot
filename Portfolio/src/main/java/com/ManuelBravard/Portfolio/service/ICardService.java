@@ -12,33 +12,34 @@ public interface ICardService {
     // public Section returnSection(String id);
     public List<ExperienceCard> returnAllExperienceCards();
 
-    public List<HomeCard> returnAllHomeCards();
-
-    public List<QPDCard> returnAllQPDCards();
-
-    public List<SkillsCard> returnAllSkillsCards();
-
     public void saveExperienceCard(ExperienceCard card);
-
-    public void saveHomeCard(HomeCard card);
-
-    public void saveQPDCard(QPDCard card);
-
-    public void saveSkillsCard(SkillsCard sec);
 
     public void deleteExperienceCard(String id);
 
-    public void deleteHomeCard(String id);
-
-    public void deleteQPDCard(String id);
-
-    public void deleteSkillsCard(String id);
-
     public ExperienceCard returnExperienceCard(String id);
+
+    public List<HomeCard> returnAllHomeCards();
+
+    public void saveHomeCard(HomeCard card);
+
+    public void deleteHomeCard(String id);
 
     public HomeCard returnHomeCard(String id);
 
+    public List<QPDCard> returnAllQPDCards();
+
+    public void saveQPDCard(QPDCard card);
+
+    public void deleteQPDCard(String id);
+
     public QPDCard returnQPDCard(String id);
 
+    public List<SkillsCard> returnAllSkillsCards();
+
     public ExperienceCard returnSkillsCard(String id);
+
+    public void saveSkillsCard(SkillsCard sec);
+
+    public void deleteSkillsCard(String id);
+
 }
