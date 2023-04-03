@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,33 +38,35 @@ public class Controller {
     // }
 
     // SECTIONS
-    @GetMapping("/sections")
+    @GetMapping("/allsections")
     @ResponseBody
     public List<Section> returnAllSections() {
         return sectionServ.returnAllSections();
-        // return sectionList;
     }
 
     @GetMapping("/section/{id}")
     @ResponseBody
     public Section returnSection(@PathVariable String id) {
         return sectionServ.returnSection(id);
-        // return sectionList;
     }
 
     @PostMapping("/new/section")
-    public void saveSection(@RequestBody Section sec) {
+    public void createSection(@RequestBody Section sec) {
         sectionServ.saveSection(sec);
-        // sectionList.add(sec);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PutMapping("/update/section/")
+    public void updateSection(@RequestBody Section sec) {
+        sectionServ.saveSection(sec);
+    }
+
+    @DeleteMapping("/delete/section/{id}")
     public void deleteSection(@PathVariable String id) {
         sectionServ.deleteSection(id);
     }
 
     // ExperienceCard
-    @GetMapping("/AllExperienceCards")
+    @GetMapping("/allExperienceCards")
     @ResponseBody
     public List<ExperienceCard> returnAllExperienceCards() {
         return cardServ.returnAllExperienceCards();
@@ -75,13 +78,17 @@ public class Controller {
         return cardServ.returnExperienceCard(id);
     }
 
-    @PostMapping("/new/ExperienceCard")
-    public void saveExperienceCard(@RequestBody ExperienceCard card) {
+    @PostMapping("/new/experienceCard")
+    public void createExperienceCard(@RequestBody ExperienceCard card) {
         cardServ.saveExperienceCard(card);
-        // sectionList.add(sec);
     }
 
-    @DeleteMapping("/deleteExperienceCard/{id}")
+    @PutMapping("/update/ExperienceCard/")
+    public void updateExperienceCard(@RequestBody ExperienceCard card) {
+        cardServ.saveExperienceCard(card);
+    }
+
+    @DeleteMapping("/delete/experienceCard/{id}")
     public void deleteExperienceCard(@PathVariable String id) {
         cardServ.deleteExperienceCard(id);
     }
