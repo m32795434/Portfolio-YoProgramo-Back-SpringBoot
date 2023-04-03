@@ -15,7 +15,7 @@ public class SectionService implements ISectionService {
     public SectionRepository secRepo;
 
     @Override
-    public List<Section> returnSections() {
+    public List<Section> returnAllSections() {
         return secRepo.findAll();
     }
 
