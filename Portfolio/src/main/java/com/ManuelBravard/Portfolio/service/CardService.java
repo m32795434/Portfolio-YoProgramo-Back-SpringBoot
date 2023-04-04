@@ -41,7 +41,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void createExperienceCard(ExperienceCard card, String sectionId) {
+    public void createExperienceCard(ExperienceCard card) {
         experienceRepo.save(card);
     }
 
@@ -68,7 +68,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void createHomeCard(HomeCard card, String sectionId) {
+    public void createHomeCard(HomeCard card) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveHomeCard'");
     }
@@ -98,7 +98,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void createQPDCard(QPDCard card, String sectionId) {
+    public void createQPDCard(QPDCard card) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveQPDCard'");
     }
@@ -128,18 +128,18 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void createSkillsCard(SkillsCard sec, String sectionId) {
-        Section section = secRepo.findById(sectionId).orElse(null);
-        SkillsCard skillsCard = new SkillsCard(sec.getId(), sec.getImgSrc(), sec.getImgAltEs(), sec.getImgAltEn(),
-                sec.getValue(), sec.getBkColor(),
-                sec.getOutStrokeColor(), section);
-        section.getSkillsCards().add(skillsCard);
+    public void createSkillsCard(SkillsCard card) {
+        Section section = secRepo.findById("skills").orElse(null);
+        SkillsCard skillsCard = new SkillsCard(card.getId(), card.getImgSrc(), card.getImgAltEs(), card.getImgAltEn(),
+                card.getValue(), card.getBkColor(),
+                card.getOutStrokeColor(), section);
+        // section.getSkillsCards().add(skillsCard);
         SkillsRepo.save(skillsCard);
-        secRepo.save(section);
+        // secRepo.save(section);
     }
 
     @Override
-    public void updateSkillsCard(SkillsCard sec) {
+    public void updateSkillsCard(SkillsCard card) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateSkillsCard'");
     }

@@ -24,14 +24,14 @@ public class Section {
     private String en;
     private String es;
 
-    @OneToMany(mappedBy = "section")
-    private List<SkillsCard> skillsCards;
-    @OneToMany(mappedBy = "section")
-    private List<ExperienceCard> experienceCard;
-    @OneToMany(mappedBy = "section")
-    private List<HomeCard> homeCard;
-    @OneToMany(mappedBy = "section")
-    private List<QPDCard> qPDCard;
+    // @OneToMany(mappedBy = "section")
+    // private List<SkillsCard> skillsCards;
+    // @OneToMany(mappedBy = "section")
+    // private List<ExperienceCard> experienceCard;
+    // @OneToMany(mappedBy = "section")
+    // private List<HomeCard> homeCard;
+    // @OneToMany(mappedBy = "section")
+    // private List<QPDCard> qPDCard;
 
     public Section() {
     }

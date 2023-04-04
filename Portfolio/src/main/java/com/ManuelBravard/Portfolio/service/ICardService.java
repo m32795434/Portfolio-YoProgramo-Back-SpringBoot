@@ -14,7 +14,7 @@ public interface ICardService {
 
     public ExperienceCard returnExperienceCard(String id);
 
-    public void createExperienceCard(ExperienceCard card, String sectionId);
+    public void createExperienceCard(ExperienceCard card);
 
     public void updateExperienceCard(ExperienceCard card);
 
@@ -22,7 +22,7 @@ public interface ICardService {
 
     public List<HomeCard> returnAllHomeCards();
 
-    public void createHomeCard(HomeCard card, String sectionId);
+    public void createHomeCard(HomeCard card);
 
     public void udpateHomeCard(HomeCard card);
 
@@ -32,7 +32,7 @@ public interface ICardService {
 
     public List<QPDCard> returnAllQPDCards();
 
-    public void createQPDCard(QPDCard card, String sectionId);
+    public void createQPDCard(QPDCard card);
 
     public void updateQPDCard(QPDCard card);
 
@@ -44,9 +44,9 @@ public interface ICardService {
 
     public SkillsCard returnSkillsCard(String id);
 
-    public void createSkillsCard(SkillsCard sec, String sectionId);
+    public void createSkillsCard(SkillsCard card);
 
-    public void updateSkillsCard(SkillsCard sec);
+    public void updateSkillsCard(SkillsCard card);
 
     public void deleteSkillsCard(String id);
 

@@ -80,8 +80,8 @@ public class Controller {
     }
 
     @PostMapping("/new/experienceCard")
-    public void createExperienceCard(@RequestBody ExperienceCard card, @PathVariable String sectionId) {
-        cardServ.createExperienceCard(card, sectionId);
+    public void createExperienceCard(@RequestBody ExperienceCard card) {
+        cardServ.createExperienceCard(card);
     }
 
     @PutMapping("/update/ExperienceCard/")
@@ -95,8 +95,8 @@ public class Controller {
     }
 
     // SkillsCard
-    @PostMapping("/new/skillsCard/{sectionId}")
-    public void createSkillsCard(@RequestBody SkillsCard card, @PathVariable String sectionId) {
-        cardServ.createSkillsCard(card, sectionId);
+    @PostMapping("/new/skillsCard")
+    public void createSkillsCard(@RequestBody SkillsCard card) {
+        cardServ.createSkillsCard(card);
     }
 }
