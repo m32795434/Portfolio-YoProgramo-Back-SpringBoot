@@ -41,7 +41,12 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void saveExperienceCard(ExperienceCard card) {
+    public void createExperienceCard(ExperienceCard card, String sectionId) {
+        experienceRepo.save(card);
+    }
+
+    @Override
+    public void updateExperienceCard(ExperienceCard card) {
         experienceRepo.save(card);
     }
 
@@ -63,9 +68,15 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void saveHomeCard(HomeCard card) {
+    public void createHomeCard(HomeCard card, String sectionId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveHomeCard'");
+    }
+
+    @Override
+    public void udpateHomeCard(HomeCard card) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'udpateHomeCard'");
     }
 
     @Override
@@ -87,9 +98,15 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void saveQPDCard(QPDCard card) {
+    public void createQPDCard(QPDCard card, String sectionId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveQPDCard'");
+    }
+
+    @Override
+    public void updateQPDCard(QPDCard card) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateQPDCard'");
     }
 
     @Override
@@ -99,7 +116,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public ExperienceCard returnSkillsCard(String id) {
+    public SkillsCard returnSkillsCard(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'returnSkillsCard'");
     }
@@ -111,7 +128,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void saveSkillsCard(SkillsCard sec, String sectionId) {
+    public void createSkillsCard(SkillsCard sec, String sectionId) {
         Section section = secRepo.findById(sectionId).orElse(null);
         SkillsCard skillsCard = new SkillsCard(sec.getId(), sec.getImgSrc(), sec.getImgAltEs(), sec.getImgAltEn(),
                 sec.getValue(), sec.getBkColor(),
@@ -119,6 +136,12 @@ public class CardService implements ICardService {
         section.getSkillsCards().add(skillsCard);
         SkillsRepo.save(skillsCard);
         secRepo.save(section);
+    }
+
+    @Override
+    public void updateSkillsCard(SkillsCard sec) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateSkillsCard'");
     }
 
     @Override

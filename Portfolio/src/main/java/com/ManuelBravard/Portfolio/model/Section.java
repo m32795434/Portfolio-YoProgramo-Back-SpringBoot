@@ -26,6 +26,12 @@ public class Section {
 
     @OneToMany(mappedBy = "section")
     private List<SkillsCard> skillsCards;
+    @OneToMany(mappedBy = "section")
+    private List<ExperienceCard> experienceCard;
+    @OneToMany(mappedBy = "section")
+    private List<HomeCard> homeCard;
+    @OneToMany(mappedBy = "section")
+    private List<QPDCard> qPDCard;
 
     public Section() {
     }

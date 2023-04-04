@@ -80,13 +80,13 @@ public class Controller {
     }
 
     @PostMapping("/new/experienceCard")
-    public void createExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
+    public void createExperienceCard(@RequestBody ExperienceCard card, @PathVariable String sectionId) {
+        cardServ.createExperienceCard(card, sectionId);
     }
 
     @PutMapping("/update/ExperienceCard/")
     public void updateExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
+        cardServ.updateExperienceCard(card);
     }
 
     @DeleteMapping("/delete/experienceCard/{id}")
@@ -97,6 +97,6 @@ public class Controller {
     // SkillsCard
     @PostMapping("/new/skillsCard/{sectionId}")
     public void createSkillsCard(@RequestBody SkillsCard card, @PathVariable String sectionId) {
-        cardServ.saveSkillsCard(card, sectionId);
+        cardServ.createSkillsCard(card, sectionId);
     }
 }

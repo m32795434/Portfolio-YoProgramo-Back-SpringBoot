@@ -2,6 +2,8 @@ package com.ManuelBravard.Portfolio.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,13 +26,16 @@ public class ExperienceCard {
     private int endDateDay;
     private String phEs;
     private String phEn;
+    @ManyToOne
+    @JoinColumn(name = "Section_id")
+    private Section section;
 
     public ExperienceCard() {
     }
 
     public ExperienceCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
-            String phEn) {
+            String phEn, Section section) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEs = imgAltEs;
@@ -43,5 +48,6 @@ public class ExperienceCard {
         this.endDateDay = endDateDay;
         this.phEs = phEs;
         this.phEn = phEn;
+        this.section = section;
     }
 }
