@@ -24,14 +24,13 @@ public class ExperienceCard {
     private int endDateDay;
     private String phEs;
     private String phEn;
-    private String sectionId;
 
     public ExperienceCard() {
     }
 
     public ExperienceCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
-            String phEn, String sectionId) {
+            String phEn) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEs = imgAltEs;
@@ -44,6 +43,5 @@ public class ExperienceCard {
         this.endDateDay = endDateDay;
         this.phEs = phEs;
         this.phEn = phEn;
-        this.sectionId = sectionId;
     }
 }

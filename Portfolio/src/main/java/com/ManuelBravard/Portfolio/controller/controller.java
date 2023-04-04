@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.Section;
+import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
 
@@ -91,5 +92,11 @@ public class Controller {
     @DeleteMapping("/delete/experienceCard/{id}")
     public void deleteExperienceCard(@PathVariable String id) {
         cardServ.deleteExperienceCard(id);
+    }
+
+    // SkillsCard
+    @PostMapping("/new/skillsCard/{sectionId}")
+    public void createSkillsCard(@RequestBody SkillsCard card, @PathVariable String sectionId) {
+        cardServ.saveSkillsCard(card, sectionId);
     }
 }

@@ -15,16 +15,14 @@ public class HomeCard {
     private String id;
     private String en;
     private String es;
-    private String sectionId;
 
     public HomeCard() {
     }
 
-    public HomeCard(String id, String en, String es, String sectionId) {
+    public HomeCard(String id, String en, String es) {
         this.id = id;
         this.en = en;
         this.es = es;
-        this.sectionId = sectionId;
     }
 
 }

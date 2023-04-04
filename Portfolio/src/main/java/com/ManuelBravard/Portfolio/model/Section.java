@@ -1,8 +1,12 @@
 package com.ManuelBravard.Portfolio.model;
 
 import lombok.Setter;
+
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 
@@ -19,6 +23,9 @@ public class Section {
     private String imgDesktop;
     private String en;
     private String es;
+
+    @OneToMany(mappedBy = "section")
+    private List<SkillsCard> skillsCards;
 
     public Section() {
     }

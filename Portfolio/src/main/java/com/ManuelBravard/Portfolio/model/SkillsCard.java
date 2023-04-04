@@ -2,6 +2,8 @@ package com.ManuelBravard.Portfolio.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,13 +21,15 @@ public class SkillsCard {
     private int value;
     private String bkColor;
     private String outStrokeColor;
-    private String sectionId;
+    @ManyToOne
+    @JoinColumn(name = "Section_id")
+    private Section section;
 
     public SkillsCard() {
     }
 
     public SkillsCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int value, String bkColor,
-            String outStrokeColor, String sectionId) {
+            String outStrokeColor, Section section) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEs = imgAltEs;
@@ -33,6 +37,6 @@ public class SkillsCard {
         this.value = value;
         this.bkColor = bkColor;
         this.outStrokeColor = outStrokeColor;
-        this.sectionId = sectionId;
+        this.section = section;
     }
 }

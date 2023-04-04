@@ -25,14 +25,13 @@ public class QPDCard {
     private String phEn;
     private String h2En;
     private String h2Es;
-    private String sectionId;
 
     public QPDCard() {
     }
 
     public QPDCard(String id, String imgSrc, String imgAlt, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
-            String phEn, String h2En, String h2Es, String sectionId) {
+            String phEn, String h2En, String h2Es) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAlt = imgAlt;
@@ -46,6 +45,5 @@ public class QPDCard {
         this.phEn = phEn;
         this.h2En = h2En;
         this.h2Es = h2Es;
-        this.sectionId = sectionId;
     }
 }

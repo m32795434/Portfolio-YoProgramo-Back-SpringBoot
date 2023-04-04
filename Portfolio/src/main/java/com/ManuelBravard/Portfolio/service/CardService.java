@@ -8,15 +8,19 @@ import org.springframework.stereotype.Service;
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
+import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.repository.ExperienceCardRepository;
 import com.ManuelBravard.Portfolio.repository.HomeCardRepository;
 import com.ManuelBravard.Portfolio.repository.QPDCardRepository;
+import com.ManuelBravard.Portfolio.repository.SectionRepository;
 import com.ManuelBravard.Portfolio.repository.SkillsCardRepository;
 
 @Service
 public class CardService implements ICardService {
 
+    @Autowired
+    public SectionRepository secRepo;
     @Autowired
     public HomeCardRepository homeRepo;
     @Autowired
@@ -107,9 +111,14 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void saveSkillsCard(SkillsCard sec) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveSkillsCard'");
+    public void saveSkillsCard(SkillsCard sec, String sectionId) {
+        Section section = secRepo.findById(sectionId).orElse(null);
+        SkillsCard skillsCard = new SkillsCard(sec.getId(), sec.getImgSrc(), sec.getImgAltEs(), sec.getImgAltEn(),
+                sec.getValue(), sec.getBkColor(),
+                sec.getOutStrokeColor(), section);
+        section.getSkillsCards().add(skillsCard);
+        SkillsRepo.save(skillsCard);
+        secRepo.save(section);
     }
 
     @Override

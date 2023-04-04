@@ -38,7 +38,7 @@ public interface ICardService {
 
     public ExperienceCard returnSkillsCard(String id);
 
-    public void saveSkillsCard(SkillsCard sec);
+    public void saveSkillsCard(SkillsCard sec, String sectionId);
 
     public void deleteSkillsCard(String id);
 
