@@ -14,9 +14,9 @@ public interface ICardService {
 
     public ExperienceCard returnExperienceCard(String id);
 
-    public void createExperienceCard(ExperienceCard card);
+    public void saveExperienceCard(ExperienceCard card);
 
-    public void updateExperienceCard(ExperienceCard card);
+    // public void updateExperienceCard(ExperienceCard card);
 
     public void deleteExperienceCard(String id);
 

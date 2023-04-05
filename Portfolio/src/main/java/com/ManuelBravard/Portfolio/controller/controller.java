@@ -81,12 +81,12 @@ public class Controller {
 
     @PostMapping("/new/experienceCard")
     public void createExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.createExperienceCard(card);
+        cardServ.saveExperienceCard(card);
     }
 
     @PutMapping("/update/ExperienceCard/")
     public void updateExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.updateExperienceCard(card);
+        cardServ.saveExperienceCard(card);
     }
 
     @DeleteMapping("/delete/experienceCard/{id}")
