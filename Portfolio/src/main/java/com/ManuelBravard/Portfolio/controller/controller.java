@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ManuelBravard.Portfolio.model.CompleteExperienceSection;
+import com.ManuelBravard.Portfolio.model.CompleteHomeSection;
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
@@ -66,6 +68,24 @@ public class Controller {
     @ResponseBody
     public Section returnSection(@PathVariable String id) {
         return sectionServ.returnSection(id);
+    }
+
+    @GetMapping("/completeHomeSection")
+    @ResponseBody
+    public CompleteHomeSection returnCompleteHomeSection() {
+        Section section = sectionServ.returnSection("home");
+        List<HomeCard> cardList = cardServ.returnAllHomeCards();
+        CompleteHomeSection completeSec = new CompleteHomeSection(section, cardList);
+        return completeSec;
+    }
+
+    @GetMapping("/completeExperienceSection")
+    @ResponseBody
+    public CompleteExperienceSection returnCompleteExperienceSection() {
+        Section section = sectionServ.returnSection("experience");
+        List<ExperienceCard> cardList = cardServ.returnAllExperienceCards();
+        CompleteExperienceSection completeSec = new CompleteExperienceSection(section, cardList);
+        return completeSec;
     }
 
     // ExperienceCard
