@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
+import com.ManuelBravard.Portfolio.model.HomeCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.service.ICardService;
@@ -120,6 +121,35 @@ public class Controller {
     @ResponseBody
     public SkillsCard returnSkillsCard(@PathVariable String id) {
         return cardServ.returnSkillsCard(id);
+    }
+
+    // homeCard
+
+    @PostMapping("/new/homeCard")
+    public void createHomeCard(@RequestBody HomeCard card) {
+        cardServ.saveHomeCard(card);
+    }
+
+    @PutMapping("/update/homeCard")
+    public void updateHomeCard(@RequestBody HomeCard card) {
+        cardServ.saveHomeCard(card);
+    }
+
+    @DeleteMapping("/delete/homeCard/{id}")
+    public void deleteHomeCard(@PathVariable String id) {
+        cardServ.deleteHomeCard(id);
+    }
+
+    @GetMapping("/allHomeCards")
+    @ResponseBody
+    public List<HomeCard> returnAllHomeCards() {
+        return cardServ.returnAllHomeCards();
+    }
+
+    @GetMapping("/homeCard/{id}")
+    @ResponseBody
+    public HomeCard returnHomeCard(@PathVariable String id) {
+        return cardServ.returnHomeCard(id);
     }
 
 }

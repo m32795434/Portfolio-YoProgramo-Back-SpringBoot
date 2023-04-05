@@ -57,26 +57,25 @@ public class CardService implements ICardService {
 
     @Override
     public List<HomeCard> returnAllHomeCards() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnHomeCards'");
+        return homeRepo.findAll();
     }
 
     @Override
     public HomeCard returnHomeCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnHomeCard'");
+        return homeRepo.findById(id).orElse(null);
     }
 
     @Override
     public void saveHomeCard(HomeCard card) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveHomeCard'");
+        Section section = secRepo.findById("home").orElse(null);
+        HomeCard homeCard = new HomeCard(card.getId(), card.getEn(), card.getEs(),
+                section);
+        homeRepo.save(homeCard);
     }
 
     @Override
     public void deleteHomeCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteHomeCard'");
+        homeRepo.deleteById(id);
     }
 
     @Override
