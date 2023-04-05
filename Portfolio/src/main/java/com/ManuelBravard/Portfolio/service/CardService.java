@@ -42,7 +42,12 @@ public class CardService implements ICardService {
 
     @Override
     public void createExperienceCard(ExperienceCard card) {
-        experienceRepo.save(card);
+        Section section = secRepo.findById("experience").orElse(null);
+        ExperienceCard experienceCard = new ExperienceCard(card.getId(), card.getImgSrc(), card.getImgAltEs(),
+                card.getImgAltEn(), card.getStartDateYear(), card.getStartDateMonth(), card.getStartDateDay(),
+                card.getEndDateYear(), card.getEndDateMonth(), card.getEndDateDay(), card.getPhEs(), card.getPhEn(),
+                section);
+        experienceRepo.save(experienceCard);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.ManuelBravard.Portfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -17,6 +19,8 @@ public class HomeCard {
     private String id;
     private String en;
     private String es;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Section_id")
     private Section section;

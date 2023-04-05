@@ -1,5 +1,7 @@
 package com.ManuelBravard.Portfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -26,6 +28,7 @@ public class ExperienceCard {
     private int endDateDay;
     private String phEs;
     private String phEn;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Section_id")
     private Section section;

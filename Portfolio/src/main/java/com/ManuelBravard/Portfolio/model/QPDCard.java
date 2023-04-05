@@ -1,5 +1,7 @@
 package com.ManuelBravard.Portfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -27,6 +29,8 @@ public class QPDCard {
     private String phEn;
     private String h2En;
     private String h2Es;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Section_id")
     private Section section;
