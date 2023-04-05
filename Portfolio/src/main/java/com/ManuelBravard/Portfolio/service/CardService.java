@@ -79,27 +79,29 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public List<QPDCard> returnAllQPDCards() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCards'");
-    }
-
-    @Override
-    public QPDCard returnQPDCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'returnQPDCard'");
-    }
-
-    @Override
     public void saveQPDCard(QPDCard card) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveQPDCard'");
+        Section section = secRepo.findById("qPD").orElse(null);
+        QPDCard qPDCard = new QPDCard(card.getId(), card.getImgSrc(), card.getImgAlt(), card.getStartDateYear(),
+                card.getStartDateMonth(), card.getStartDateDay(),
+                card.getEndDateYear(), card.getEndDateMonth(), card.getEndDateDay(), card.getPhEs(), card.getPhEn(),
+                card.getH2En(), card.getH2Es(),
+                section);
+        qPDRepo.save(qPDCard);
     }
 
     @Override
     public void deleteQPDCard(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteQPDCard'");
+        qPDRepo.deleteById(id);
+    }
+
+    @Override
+    public List<QPDCard> returnAllQPDCards() {
+        return qPDRepo.findAll();
+    }
+
+    @Override
+    public QPDCard returnQPDCard(String id) {
+        return qPDRepo.findById(id).orElse(null);
     }
 
     @Override

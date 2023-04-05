@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
+import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.service.ICardService;
@@ -150,6 +151,34 @@ public class Controller {
     @ResponseBody
     public HomeCard returnHomeCard(@PathVariable String id) {
         return cardServ.returnHomeCard(id);
+    }
+
+    // QPDCard
+    @PostMapping("/new/qPDCard")
+    public void createQPDCard(@RequestBody QPDCard card) {
+        cardServ.saveQPDCard(card);
+    }
+
+    @PutMapping("/update/qPDCard")
+    public void updateQPDCard(@RequestBody QPDCard card) {
+        cardServ.saveQPDCard(card);
+    }
+
+    @DeleteMapping("/delete/qPDCard/{id}")
+    public void deleteQPDCard(@PathVariable String id) {
+        cardServ.deleteQPDCard(id);
+    }
+
+    @GetMapping("/allQPDCards")
+    @ResponseBody
+    public List<QPDCard> returnAllQPDCards() {
+        return cardServ.returnAllQPDCards();
+    }
+
+    @GetMapping("/qPDCard/{id}")
+    @ResponseBody
+    public QPDCard returnQPDCard(@PathVariable String id) {
+        return cardServ.returnQPDCard(id);
     }
 
 }
