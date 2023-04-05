@@ -39,6 +39,21 @@ public class Controller {
     // }
 
     // SECTIONS
+    @PostMapping("/new/section")
+    public void createSection(@RequestBody Section sec) {
+        sectionServ.saveSection(sec);
+    }
+
+    @PutMapping("/update/section")
+    public void updateSection(@RequestBody Section sec) {
+        sectionServ.saveSection(sec);
+    }
+
+    @DeleteMapping("/delete/section/{id}")
+    public void deleteSection(@PathVariable String id) {
+        sectionServ.deleteSection(id);
+    }
+
     @GetMapping("/allsections")
     @ResponseBody
     public List<Section> returnAllSections() {
@@ -51,22 +66,22 @@ public class Controller {
         return sectionServ.returnSection(id);
     }
 
-    @PostMapping("/new/section")
-    public void createSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
-
-    @PutMapping("/update/section/")
-    public void updateSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
-
-    @DeleteMapping("/delete/section/{id}")
-    public void deleteSection(@PathVariable String id) {
-        sectionServ.deleteSection(id);
-    }
-
     // ExperienceCard
+    @PostMapping("/new/experienceCard")
+    public void createExperienceCard(@RequestBody ExperienceCard card) {
+        cardServ.saveExperienceCard(card);
+    }
+
+    @PutMapping("/update/ExperienceCard")
+    public void updateExperienceCard(@RequestBody ExperienceCard card) {
+        cardServ.saveExperienceCard(card);
+    }
+
+    @DeleteMapping("/delete/experienceCard/{id}")
+    public void deleteExperienceCard(@PathVariable String id) {
+        cardServ.deleteExperienceCard(id);
+    }
+
     @GetMapping("/allExperienceCards")
     @ResponseBody
     public List<ExperienceCard> returnAllExperienceCards() {
@@ -79,24 +94,32 @@ public class Controller {
         return cardServ.returnExperienceCard(id);
     }
 
-    @PostMapping("/new/experienceCard")
-    public void createExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
-    }
-
-    @PutMapping("/update/ExperienceCard/")
-    public void updateExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
-    }
-
-    @DeleteMapping("/delete/experienceCard/{id}")
-    public void deleteExperienceCard(@PathVariable String id) {
-        cardServ.deleteExperienceCard(id);
-    }
-
     // SkillsCard
     @PostMapping("/new/skillsCard")
     public void createSkillsCard(@RequestBody SkillsCard card) {
-        cardServ.createSkillsCard(card);
+        cardServ.saveSkillsCard(card);
     }
+
+    @PutMapping("/update/skillsCard")
+    public void updateSkillsCard(@RequestBody SkillsCard card) {
+        cardServ.saveSkillsCard(card);
+    }
+
+    @DeleteMapping("/delete/skillsCard/{id}")
+    public void deleteSkillsCard(@PathVariable String id) {
+        cardServ.deleteSkillsCard(id);
+    }
+
+    @GetMapping("/allSkillsCards")
+    @ResponseBody
+    public List<SkillsCard> returnAllSkillsCards() {
+        return cardServ.returnAllSkillsCards();
+    }
+
+    @GetMapping("/skillsCard/{id}")
+    @ResponseBody
+    public SkillsCard returnSkillsCard(@PathVariable String id) {
+        return cardServ.returnSkillsCard(id);
+    }
+
 }
