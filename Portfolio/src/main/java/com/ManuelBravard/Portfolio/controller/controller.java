@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ManuelBravard.Portfolio.model.CompleteExperienceSection;
 import com.ManuelBravard.Portfolio.model.CompleteHomeSection;
+import com.ManuelBravard.Portfolio.model.CompleteQPDSection;
+import com.ManuelBravard.Portfolio.model.CompleteSkillsSection;
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
@@ -85,6 +87,24 @@ public class Controller {
         Section section = sectionServ.returnSection("experience");
         List<ExperienceCard> cardList = cardServ.returnAllExperienceCards();
         CompleteExperienceSection completeSec = new CompleteExperienceSection(section, cardList);
+        return completeSec;
+    }
+
+    @GetMapping("/completeQPDSection")
+    @ResponseBody
+    public CompleteQPDSection returnCompleteQPDSection() {
+        Section section = sectionServ.returnSection("qPD");
+        List<QPDCard> cardList = cardServ.returnAllQPDCards();
+        CompleteQPDSection completeSec = new CompleteQPDSection(section, cardList);
+        return completeSec;
+    }
+
+    @GetMapping("/completeSkillsSection")
+    @ResponseBody
+    public CompleteSkillsSection returnCompleteSkillsSection() {
+        Section section = sectionServ.returnSection("skills");
+        List<SkillsCard> cardList = cardServ.returnAllSkillsCards();
+        CompleteSkillsSection completeSec = new CompleteSkillsSection(section, cardList);
         return completeSec;
     }
 
