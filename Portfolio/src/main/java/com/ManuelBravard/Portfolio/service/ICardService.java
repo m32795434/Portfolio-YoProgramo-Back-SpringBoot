@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
+import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 
@@ -41,5 +42,13 @@ public interface ICardService {
     public void saveSkillsCard(SkillsCard card);
 
     public void deleteSkillsCard(String id);
+
+    public List<ProjectsCard> returnAllProjectsCards();
+
+    public ProjectsCard returnProjectsCard(String id);
+
+    public void saveProjectsCard(ProjectsCard card);
+
+    public void deleteProjectsCard(String id);
 
 }

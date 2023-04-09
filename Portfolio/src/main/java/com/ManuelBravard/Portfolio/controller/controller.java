@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ManuelBravard.Portfolio.model.CompleteExperienceSection;
 import com.ManuelBravard.Portfolio.model.CompleteHomeSection;
+import com.ManuelBravard.Portfolio.model.CompleteProjectsSection;
 import com.ManuelBravard.Portfolio.model.CompleteQPDSection;
 import com.ManuelBravard.Portfolio.model.CompleteSkillsSection;
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
+import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
@@ -105,6 +107,15 @@ public class Controller {
         Section section = sectionServ.returnSection("skills");
         List<SkillsCard> cardList = cardServ.returnAllSkillsCards();
         CompleteSkillsSection completeSec = new CompleteSkillsSection(section, cardList);
+        return completeSec;
+    }
+
+    @GetMapping("/completeProjectsSection")
+    @ResponseBody
+    public CompleteProjectsSection returnCompleteProjectsSection() {
+        Section section = sectionServ.returnSection("projects");
+        List<ProjectsCard> cardList = cardServ.returnAllProjectsCards();
+        CompleteProjectsSection completeSec = new CompleteProjectsSection(section, cardList);
         return completeSec;
     }
 
@@ -221,4 +232,31 @@ public class Controller {
         return cardServ.returnQPDCard(id);
     }
 
+    // PROJECTS
+    @PostMapping("/new/projectsCard")
+    public void createProjectsCard(@RequestBody ProjectsCard card) {
+        cardServ.saveProjectsCard(card);
+    }
+
+    @PutMapping("/update/ProjectsCard")
+    public void updateProjectsCard(@RequestBody ProjectsCard card) {
+        cardServ.saveProjectsCard(card);
+    }
+
+    @DeleteMapping("/delete/ProjectsCard/{id}")
+    public void deleteProjectsCard(@PathVariable String id) {
+        cardServ.deleteProjectsCard(id);
+    }
+
+    @GetMapping("/allProjectsCards")
+    @ResponseBody
+    public List<ProjectsCard> returnAllProjectsCards() {
+        return cardServ.returnAllProjectsCards();
+    }
+
+    @GetMapping("/ProjectsCard/{id}")
+    @ResponseBody
+    public ProjectsCard returnProjectsCard(@PathVariable String id) {
+        return cardServ.returnProjectsCard(id);
+    }
 }

@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.ManuelBravard.Portfolio.model.ExperienceCard;
 import com.ManuelBravard.Portfolio.model.HomeCard;
+import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.repository.ExperienceCardRepository;
 import com.ManuelBravard.Portfolio.repository.HomeCardRepository;
+import com.ManuelBravard.Portfolio.repository.ProjectsCardRepository;
 import com.ManuelBravard.Portfolio.repository.QPDCardRepository;
 import com.ManuelBravard.Portfolio.repository.SectionRepository;
 import com.ManuelBravard.Portfolio.repository.SkillsCardRepository;
@@ -29,6 +31,8 @@ public class CardService implements ICardService {
     public QPDCardRepository qPDRepo;
     @Autowired
     public SkillsCardRepository SkillsRepo;
+    @Autowired
+    public ProjectsCardRepository projectsRepo;
 
     @Override
     public List<ExperienceCard> returnAllExperienceCards() {
@@ -127,6 +131,30 @@ public class CardService implements ICardService {
     @Override
     public void deleteSkillsCard(String id) {
         SkillsRepo.deleteById(id);
+    }
+
+    @Override
+    public List<ProjectsCard> returnAllProjectsCards() {
+        return projectsRepo.findAll();
+    }
+
+    @Override
+    public ProjectsCard returnProjectsCard(String id) {
+        return projectsRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void saveProjectsCard(ProjectsCard card) {
+        Section section = secRepo.findById("projects").orElse(null);
+        ProjectsCard projectsCard = new ProjectsCard(card.getId(), card.getImgSrc(),
+                card.getImgAltEn(), card.getImgAltEs(), card.getPhEs(), card.getPhEn(), card.getH2En(), card.getH2Es(),
+                section);
+        projectsRepo.save(projectsCard);
+    }
+
+    @Override
+    public void deleteProjectsCard(String id) {
+        projectsRepo.deleteById(id);
     }
 
 }
