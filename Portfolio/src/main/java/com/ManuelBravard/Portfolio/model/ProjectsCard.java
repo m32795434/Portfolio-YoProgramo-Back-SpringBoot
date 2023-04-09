@@ -13,19 +13,13 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "qpdcard")
-public class QPDCard {
+@Table(name = "projectscard")
+public class ProjectsCard {
     @Id
     private String id;
     private String imgSrc;
     private String imgAltEs;
     private String imgAltEn;
-    private int startDateYear;
-    private int startDateMonth;
-    private int startDateDay;
-    private int endDateYear;
-    private int endDateMonth;
-    private int endDateDay;
     private String phEs;
     private String phEn;
     private String h2En;
@@ -36,22 +30,15 @@ public class QPDCard {
     @JoinColumn(name = "Section_id")
     private Section section;
 
-    public QPDCard() {
+    public ProjectsCard() {
     }
 
-    public QPDCard(String id, String imgSrc, String imgAltEn, String imgAltEs, int startDateYear,
-            int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
+    public ProjectsCard(String id, String imgSrc, String imgAltEn, String imgAltEs, String phEs,
             String phEn, String h2En, String h2Es, Section section) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEn = imgAltEn;
         this.imgAltEs = imgAltEs;
-        this.startDateYear = startDateYear;
-        this.startDateMonth = startDateMonth;
-        this.startDateDay = startDateDay;
-        this.endDateYear = endDateYear;
-        this.endDateMonth = endDateMonth;
-        this.endDateDay = endDateDay;
         this.phEs = phEs;
         this.phEn = phEn;
         this.h2En = h2En;

@@ -17,8 +17,8 @@ import lombok.Setter;
 public class HomeCard {
     @Id
     private String id;
-    private String en;
-    private String es;
+    private String phEs;
+    private String phEn;
 
     @JsonIgnore
     @ManyToOne
@@ -30,8 +30,8 @@ public class HomeCard {
 
     public HomeCard(String id, String en, String es, Section section) {
         this.id = id;
-        this.en = en;
-        this.es = es;
+        this.phEn = en;
+        this.phEs = es;
         this.section = section;
     }
 

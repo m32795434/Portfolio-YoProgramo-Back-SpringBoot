@@ -68,7 +68,7 @@ public class CardService implements ICardService {
     @Override
     public void saveHomeCard(HomeCard card) {
         Section section = secRepo.findById("home").orElse(null);
-        HomeCard homeCard = new HomeCard(card.getId(), card.getEn(), card.getEs(),
+        HomeCard homeCard = new HomeCard(card.getId(), card.getPhEn(), card.getPhEs(),
                 section);
         homeRepo.save(homeCard);
     }
@@ -81,7 +81,8 @@ public class CardService implements ICardService {
     @Override
     public void saveQPDCard(QPDCard card) {
         Section section = secRepo.findById("qPD").orElse(null);
-        QPDCard qPDCard = new QPDCard(card.getId(), card.getImgSrc(), card.getImgAlt(), card.getStartDateYear(),
+        QPDCard qPDCard = new QPDCard(card.getId(), card.getImgSrc(), card.getImgAltEn(), card.getImgAltEs(),
+                card.getStartDateYear(),
                 card.getStartDateMonth(), card.getStartDateDay(),
                 card.getEndDateYear(), card.getEndDateMonth(), card.getEndDateDay(), card.getPhEs(), card.getPhEn(),
                 card.getH2En(), card.getH2Es(),
