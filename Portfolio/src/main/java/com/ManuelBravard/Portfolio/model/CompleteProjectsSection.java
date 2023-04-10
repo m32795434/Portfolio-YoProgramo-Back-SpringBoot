@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 public class CompleteProjectsSection {
     private Section section;
-    private List<ProjectsCard> projectsCardList;
+    private List<ProjectsCard> cards;
 
     public CompleteProjectsSection(Section section, List<ProjectsCard> projectsCardList) {
         this.section = section;
-        this.projectsCardList = projectsCardList;
+        this.cards = projectsCardList;
     }
 }

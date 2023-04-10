@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 public class CompleteQPDSection {
     private Section section;
-    private List<QPDCard> qPDCardList;
+    private List<QPDCard> cards;
 
     public CompleteQPDSection(Section section, List<QPDCard> qPDCardList) {
         this.section = section;
-        this.qPDCardList = qPDCardList;
+        this.cards = qPDCardList;
     }
 }
