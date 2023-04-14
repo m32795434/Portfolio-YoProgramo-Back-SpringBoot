@@ -20,6 +20,12 @@ public class ProjectsCard {
     private String imgSrc;
     private String imgAltEs;
     private String imgAltEn;
+    private int startDateYear;
+    private int startDateMonth;
+    private int startDateDay;
+    private int endDateYear;
+    private int endDateMonth;
+    private int endDateDay;
     private String phEs;
     private String phEn;
     private String h2En;
@@ -34,11 +40,18 @@ public class ProjectsCard {
     }
 
     public ProjectsCard(String id, String imgSrc, String imgAltEn, String imgAltEs, String phEs,
-            String phEn, String h2En, String h2Es, Section section) {
+            String phEn, String h2En, String h2Es, Section section, int startDateYear,
+            int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay) {
         this.id = id;
         this.imgSrc = imgSrc;
         this.imgAltEn = imgAltEn;
         this.imgAltEs = imgAltEs;
+        this.startDateYear = startDateYear;
+        this.startDateMonth = startDateMonth;
+        this.startDateDay = startDateDay;
+        this.endDateYear = endDateYear;
+        this.endDateMonth = endDateMonth;
+        this.endDateDay = endDateDay;
         this.phEs = phEs;
         this.phEn = phEn;
         this.h2En = h2En;

@@ -120,17 +120,17 @@ public class Controller {
     }
 
     // ExperienceCard
-    @PostMapping("/new/experienceCard")
+    @PostMapping("/experience/createCard")
     public void createExperienceCard(@RequestBody ExperienceCard card) {
         cardServ.saveExperienceCard(card);
     }
 
-    @PutMapping("/update/ExperienceCard")
+    @PutMapping("/experience/updateCard")
     public void updateExperienceCard(@RequestBody ExperienceCard card) {
         cardServ.saveExperienceCard(card);
     }
 
-    @DeleteMapping("/delete/experienceCard/{id}")
+    @DeleteMapping("/experience/deleteCard/{id}")
     public void deleteExperienceCard(@PathVariable String id) {
         cardServ.deleteExperienceCard(id);
     }
@@ -148,17 +148,17 @@ public class Controller {
     }
 
     // SkillsCard
-    @PostMapping("/new/skillsCard")
+    @PostMapping("/skills/createCard")
     public void createSkillsCard(@RequestBody SkillsCard card) {
         cardServ.saveSkillsCard(card);
     }
 
-    @PutMapping("/update/skillsCard")
+    @PutMapping("/skills/updateCard")
     public void updateSkillsCard(@RequestBody SkillsCard card) {
         cardServ.saveSkillsCard(card);
     }
 
-    @DeleteMapping("/delete/skillsCard/{id}")
+    @DeleteMapping("/skills/deleteCard/{id}")
     public void deleteSkillsCard(@PathVariable String id) {
         cardServ.deleteSkillsCard(id);
     }
@@ -177,17 +177,17 @@ public class Controller {
 
     // homeCard
 
-    @PostMapping("/new/homeCard")
+    @PostMapping("/home/createCard")
     public void createHomeCard(@RequestBody HomeCard card) {
         cardServ.saveHomeCard(card);
     }
 
-    @PutMapping("/update/homeCard")
+    @PutMapping("/home/updateCard")
     public void updateHomeCard(@RequestBody HomeCard card) {
         cardServ.saveHomeCard(card);
     }
 
-    @DeleteMapping("/delete/homeCard/{id}")
+    @DeleteMapping("/home/deleteCard/{id}")
     public void deleteHomeCard(@PathVariable String id) {
         cardServ.deleteHomeCard(id);
     }
@@ -205,17 +205,17 @@ public class Controller {
     }
 
     // QPDCard
-    @PostMapping("/new/qPDCard")
+    @PostMapping("/qPD/createCard")
     public void createQPDCard(@RequestBody QPDCard card) {
         cardServ.saveQPDCard(card);
     }
 
-    @PutMapping("/update/qPDCard")
+    @PutMapping("/qPD/updateCard")
     public void updateQPDCard(@RequestBody QPDCard card) {
         cardServ.saveQPDCard(card);
     }
 
-    @DeleteMapping("/delete/qPDCard/{id}")
+    @DeleteMapping("/qPD/deleteCard/{id}")
     public void deleteQPDCard(@PathVariable String id) {
         cardServ.deleteQPDCard(id);
     }
@@ -233,17 +233,17 @@ public class Controller {
     }
 
     // PROJECTS
-    @PostMapping("/new/projectsCard")
+    @PostMapping("/projects/createCard")
     public void createProjectsCard(@RequestBody ProjectsCard card) {
         cardServ.saveProjectsCard(card);
     }
 
-    @PutMapping("/update/ProjectsCard")
+    @PutMapping("/projects/updateCard")
     public void updateProjectsCard(@RequestBody ProjectsCard card) {
         cardServ.saveProjectsCard(card);
     }
 
-    @DeleteMapping("/delete/ProjectsCard/{id}")
+    @DeleteMapping("/projects/deleteCard/{id}")
     public void deleteProjectsCard(@PathVariable String id) {
         cardServ.deleteProjectsCard(id);
     }

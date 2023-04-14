@@ -148,7 +148,8 @@ public class CardService implements ICardService {
         Section section = secRepo.findById("projects").orElse(null);
         ProjectsCard projectsCard = new ProjectsCard(card.getId(), card.getImgSrc(),
                 card.getImgAltEn(), card.getImgAltEs(), card.getPhEs(), card.getPhEn(), card.getH2En(), card.getH2Es(),
-                section);
+                section, card.getStartDateYear(), card.getStartDateMonth(), card.getStartDateDay(),
+                card.getEndDateYear(), card.getEndDateMonth(), card.getEndDateDay());
         projectsRepo.save(projectsCard);
     }
 
