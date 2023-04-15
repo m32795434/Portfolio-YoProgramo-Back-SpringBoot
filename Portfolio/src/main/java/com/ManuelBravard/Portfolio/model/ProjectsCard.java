@@ -17,9 +17,8 @@ import lombok.Setter;
 public class ProjectsCard {
     @Id
     private String id;
-    private String imgSrc;
-    private String imgAltEs;
-    private String imgAltEn;
+    private String vMp4Src;
+    private String vWebSrc;
     private int startDateYear;
     private int startDateMonth;
     private int startDateDay;
@@ -39,13 +38,12 @@ public class ProjectsCard {
     public ProjectsCard() {
     }
 
-    public ProjectsCard(String id, String imgSrc, String imgAltEn, String imgAltEs, String phEs,
+    public ProjectsCard(String id, String vWebSrc, String vMp4Src, String phEs,
             String phEn, String h2En, String h2Es, Section section, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay) {
         this.id = id;
-        this.imgSrc = imgSrc;
-        this.imgAltEn = imgAltEn;
-        this.imgAltEs = imgAltEs;
+        this.vWebSrc = vWebSrc;
+        this.vMp4Src = vMp4Src;
         this.startDateYear = startDateYear;
         this.startDateMonth = startDateMonth;
         this.startDateDay = startDateDay;
