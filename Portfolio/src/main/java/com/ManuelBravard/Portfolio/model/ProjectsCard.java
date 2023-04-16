@@ -17,8 +17,8 @@ import lombok.Setter;
 public class ProjectsCard {
     @Id
     private String id;
-    private String vMp4Src;
-    private String vWebSrc;
+    private String vmp4Src;
+    private String vwebSrc;
     private int startDateYear;
     private int startDateMonth;
     private int startDateDay;
@@ -29,6 +29,8 @@ public class ProjectsCard {
     private String phEn;
     private String h2En;
     private String h2Es;
+    private String codeUrl;
+    private String deployUrl;
 
     @JsonIgnore
     @ManyToOne
@@ -38,12 +40,13 @@ public class ProjectsCard {
     public ProjectsCard() {
     }
 
-    public ProjectsCard(String id, String vWebSrc, String vMp4Src, String phEs,
+    public ProjectsCard(String id, String vwebSrc, String vmp4Src, String phEs,
             String phEn, String h2En, String h2Es, Section section, int startDateYear,
-            int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay) {
+            int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String codeUrl,
+            String deployUrl) {
         this.id = id;
-        this.vWebSrc = vWebSrc;
-        this.vMp4Src = vMp4Src;
+        this.vwebSrc = vwebSrc;
+        this.vmp4Src = vmp4Src;
         this.startDateYear = startDateYear;
         this.startDateMonth = startDateMonth;
         this.startDateDay = startDateDay;
@@ -55,5 +58,7 @@ public class ProjectsCard {
         this.h2En = h2En;
         this.h2Es = h2Es;
         this.section = section;
+        this.codeUrl = codeUrl;
+        this.deployUrl = deployUrl;
     }
 }
