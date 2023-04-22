@@ -15,6 +15,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "experiencecard")
 public class ExperienceCard {
+    // The ids are string type, because in the first version o this app, I used the
+    // alements'
+    // "contentEditable" atts, to update the content, and I used to reference/link
+    // them with a button'data-set-id which matched with the element(p-h1-h2)'id
+    // and, it
+    // was better to do this if the id was a string. Otherwise it was uggly to read
+    // and code in the frontend. (I start to code this app in Vanilla Js.)I have
     @Id
     private String id;
     private String imgSrc;

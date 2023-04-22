@@ -13,6 +13,10 @@ import lombok.Getter;
 @Table(name = "section")
 public class Section {
     @Id
+    // Because I have 5 sections, and maybe will be another more, but not hundred of
+    // sections, I decided to use string ids!😃
+    // It's more transparent, ease-to-read, and ease-to-code this way in the
+    // frontend
     private String id;
     private String imgMobile;
     private String imgDesktop;
