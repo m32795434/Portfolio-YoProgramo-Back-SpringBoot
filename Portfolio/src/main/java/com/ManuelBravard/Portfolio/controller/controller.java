@@ -23,28 +23,20 @@ import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
+import com.ManuelBravard.Portfolio.model.User;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
+import com.ManuelBravard.Portfolio.service.IUsersService;
 
 @RestController
 public class Controller {
+
     @Autowired
     private ISectionService sectionServ;
     @Autowired
     private ICardService cardServ;
-    // List<Section> sectionList = new ArrayList<Section>();
-
-    // GET
-    // @GetMapping("/hola/{name}/{edad}")
-    // public String decirHola(@PathVariable String name, @PathVariable int edad) {
-
-    // return "hola " + name + '!' + "tu tienes: " + edad + "años de edad !";
-    // }
-
-    // @GetMapping("/")
-    // public String sendSection(@RequestParam String section) {
-    // return "Section " + section;
-    // }
+    @Autowired
+    private IUsersService userServ;
 
     // SECTIONS
     @PostMapping("/new/section")
@@ -259,4 +251,29 @@ public class Controller {
     public ProjectsCard returnProjectsCard(@PathVariable String id) {
         return cardServ.returnProjectsCard(id);
     }
+
+    // USERS
+    @PutMapping("/users/update")
+    public void saveUsers(@RequestBody List<User> users) {
+        userServ.saveUsers(users);
+    }
+
+    @GetMapping("/users/getAll")
+    @ResponseBody
+    public List<User> returnAllUsers() {
+        return userServ.returnAllUsers();
+    }
 }
+// List<Section> sectionList = new ArrayList<Section>();
+
+// GET
+// @GetMapping("/hola/{name}/{edad}")
+// public String decirHola(@PathVariable String name, @PathVariable int edad) {
+
+// return "hola " + name + '!' + "tu tienes: " + edad + "años de edad !";
+// }
+
+// @GetMapping("/")
+// public String sendSection(@RequestParam String section) {
+// return "Section " + section;
+// }

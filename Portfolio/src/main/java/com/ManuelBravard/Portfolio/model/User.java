@@ -13,11 +13,11 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
-    @Column(nullable = false, length = 3)
-    @Size(max = 3)
+    @Column(nullable = false, length = 10)
+    @Size(max = 10)
     private String id;
     @Column(nullable = false, length = 50)
     @Email
@@ -26,10 +26,10 @@ public class Users {
     @Size(min = 8, max = 30)
     private String userPass;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String id, String userName, String userPass) {
+    public User(String id, String userName, String userPass) {
         this.id = id;
         this.userName = userName;
         this.userPass = userPass;
