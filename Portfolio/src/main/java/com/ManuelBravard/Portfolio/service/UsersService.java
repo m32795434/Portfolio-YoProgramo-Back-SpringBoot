@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
 import com.ManuelBravard.Portfolio.model.User;
 import com.ManuelBravard.Portfolio.repository.UsersRepository;
 
@@ -15,16 +16,21 @@ public class UsersService implements IUsersService {
     public UsersRepository userRepo;
 
     @Override
-    public List<User> returnAllUsers() {
-        return userRepo.findAll();
+    public boolean checkAuth(User user) {
+        User resp = userRepo.findById(user.getId()).orElse(null);
+        if (resp.getUserName().equals(user.getUserName()) && resp.getUserPass().equals(user.getUserPass())
+                && resp.getLevel().equals(user.getLevel())) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void saveUsers(List<User> users) {
-        for (User user : users) {
-            User tempUser = new User(user.getId(), user.getUserName(), user.getUserPass());
-            userRepo.save(tempUser);
-        }
+    public void saveUser(UpdateUserAndPassObj user) {
+        User tempUser = userRepo.findById(user.getId()).orElse(null);
+        tempUser.setUserName(user.getUserName());
+        tempUser.setUserPass(user.getUserPass());
+        userRepo.save(tempUser);
     }
 
 }

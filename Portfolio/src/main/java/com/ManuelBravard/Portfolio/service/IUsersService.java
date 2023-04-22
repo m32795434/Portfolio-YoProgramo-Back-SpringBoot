@@ -1,11 +1,10 @@
 package com.ManuelBravard.Portfolio.service;
 
-import java.util.List;
-
+import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
 import com.ManuelBravard.Portfolio.model.User;
 
 public interface IUsersService {
-    public List<User> returnAllUsers();
+    public boolean checkAuth(User user);
 
-    public void saveUsers(List<User> users);
+    public void saveUser(UpdateUserAndPassObj user);
 }

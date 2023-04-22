@@ -23,6 +23,7 @@ import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
+import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
 import com.ManuelBravard.Portfolio.model.User;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
@@ -253,15 +254,15 @@ public class Controller {
     }
 
     // USERS
-    @PutMapping("/users/update")
-    public void saveUsers(@RequestBody List<User> users) {
-        userServ.saveUsers(users);
+    @PutMapping("/user")
+    public void saveUser(@RequestBody UpdateUserAndPassObj user) {
+        userServ.saveUser(user);
     }
 
-    @GetMapping("/users/getAll")
+    @PostMapping("/login")
     @ResponseBody
-    public List<User> returnAllUsers() {
-        return userServ.returnAllUsers();
+    public Boolean checkAuth(@RequestBody User user) {
+        return userServ.checkAuth(user);
     }
 }
 // List<Section> sectionList = new ArrayList<Section>();
