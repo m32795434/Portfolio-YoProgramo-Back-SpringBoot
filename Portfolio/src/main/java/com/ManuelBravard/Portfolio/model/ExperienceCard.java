@@ -2,6 +2,7 @@ package com.ManuelBravard.Portfolio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +23,9 @@ public class ExperienceCard {
 
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Min(value = 1)
-    @Max(value = 10)
+    @Column(length = 1)
+    @Min(value = 1, message = "The card id should be greater than 0")
+    @Max(value = 9, message = "The card id should be lower than 9")
     private Integer id;
 
     private String imgSrc;

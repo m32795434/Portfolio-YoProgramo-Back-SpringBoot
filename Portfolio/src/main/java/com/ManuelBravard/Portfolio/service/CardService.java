@@ -54,6 +54,7 @@ public class CardService implements ICardService {
         experienceRepo.save(experienceCard);
     }
 
+    // ------------------------------//FALTAN LOS OTROS!!!!!!!
     @Override
     public void deleteExperienceCard(Integer id) {
         experienceRepo.deleteById(id);
@@ -87,6 +88,13 @@ public class CardService implements ICardService {
     @Override
     public void deleteHomeCard(Integer id) {
         homeRepo.deleteById(id);
+        List<HomeCard> expCardArray = homeRepo.findAll();
+        int size = expCardArray.size();
+        for (int index = 0; index < size; index++) {
+            HomeCard tempCard = expCardArray.get(index);
+            tempCard.setId(index + 1);
+            homeRepo.save(tempCard);
+        }
     }
 
     @Override
@@ -104,6 +112,13 @@ public class CardService implements ICardService {
     @Override
     public void deleteQPDCard(Integer id) {
         qPDRepo.deleteById(id);
+        List<QPDCard> expCardArray = qPDRepo.findAll();
+        int size = expCardArray.size();
+        for (int index = 0; index < size; index++) {
+            QPDCard tempCard = expCardArray.get(index);
+            tempCard.setId(index + 1);
+            qPDRepo.save(tempCard);
+        }
     }
 
     @Override
@@ -138,6 +153,13 @@ public class CardService implements ICardService {
     @Override
     public void deleteSkillsCard(Integer id) {
         SkillsRepo.deleteById(id);
+        List<SkillsCard> expCardArray = SkillsRepo.findAll();
+        int size = expCardArray.size();
+        for (int index = 0; index < size; index++) {
+            SkillsCard tempCard = expCardArray.get(index);
+            tempCard.setId(index + 1);
+            SkillsRepo.save(tempCard);
+        }
     }
 
     @Override
@@ -164,6 +186,13 @@ public class CardService implements ICardService {
     @Override
     public void deleteProjectsCard(Integer id) {
         projectsRepo.deleteById(id);
+        List<ProjectsCard> expCardArray = projectsRepo.findAll();
+        int size = expCardArray.size();
+        for (int index = 0; index < size; index++) {
+            ProjectsCard tempCard = expCardArray.get(index);
+            tempCard.setId(index + 1);
+            projectsRepo.save(tempCard);
+        }
     }
 
 }
