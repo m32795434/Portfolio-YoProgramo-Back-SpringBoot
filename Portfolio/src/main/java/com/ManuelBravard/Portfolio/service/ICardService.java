@@ -13,42 +13,42 @@ public interface ICardService {
     // public Section returnSection(String id);
     public List<ExperienceCard> returnAllExperienceCards();
 
-    public ExperienceCard returnExperienceCard(String id);
+    public ExperienceCard returnExperienceCard(Integer id);
 
     public void saveExperienceCard(ExperienceCard card);
 
-    public void deleteExperienceCard(String id);
+    public void deleteExperienceCard(Integer id);
 
     public List<HomeCard> returnAllHomeCards();
 
     public void saveHomeCard(HomeCard card);
 
-    public void deleteHomeCard(String id);
+    public void deleteHomeCard(Integer id);
 
-    public HomeCard returnHomeCard(String id);
+    public HomeCard returnHomeCard(Integer id);
 
     public List<QPDCard> returnAllQPDCards();
 
     public void saveQPDCard(QPDCard card);
 
-    public void deleteQPDCard(String id);
+    public void deleteQPDCard(Integer id);
 
-    public QPDCard returnQPDCard(String id);
+    public QPDCard returnQPDCard(Integer id);
 
     public List<SkillsCard> returnAllSkillsCards();
 
-    public SkillsCard returnSkillsCard(String id);
+    public SkillsCard returnSkillsCard(Integer id);
 
     public void saveSkillsCard(SkillsCard card);
 
-    public void deleteSkillsCard(String id);
+    public void deleteSkillsCard(Integer id);
 
     public List<ProjectsCard> returnAllProjectsCards();
 
-    public ProjectsCard returnProjectsCard(String id);
+    public ProjectsCard returnProjectsCard(Integer id);
 
     public void saveProjectsCard(ProjectsCard card);
 
-    public void deleteProjectsCard(String id);
+    public void deleteProjectsCard(Integer id);
 
 }

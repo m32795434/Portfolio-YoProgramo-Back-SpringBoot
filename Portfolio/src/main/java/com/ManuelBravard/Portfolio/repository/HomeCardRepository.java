@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ManuelBravard.Portfolio.model.HomeCard;
 
 // @Repository
-public interface HomeCardRepository extends JpaRepository<HomeCard, String> {
+public interface HomeCardRepository extends JpaRepository<HomeCard, Integer> {
 
 }

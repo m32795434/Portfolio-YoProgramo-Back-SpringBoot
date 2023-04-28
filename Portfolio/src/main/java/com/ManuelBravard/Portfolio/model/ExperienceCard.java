@@ -3,10 +3,14 @@ package com.ManuelBravard.Portfolio.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,15 +19,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "experiencecard")
 public class ExperienceCard {
-    // The ids are string type, because in the first version o this app, I used the
-    // alements'
-    // "contentEditable" atts, to update the content, and I used to reference/link
-    // them with a button'data-set-id which matched with the element(p-h1-h2)'id
-    // and, it
-    // was better to do this if the id was a string. Otherwise it was uggly to read
-    // and code in the frontend. (I start to code this app in Vanilla Js.)I have
+
     @Id
-    private String id;
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Min(value = 1)
+    @Max(value = 10)
+    private Integer id;
+
     private String imgSrc;
     private String imgAltEs;
     private String imgAltEn;
@@ -43,7 +45,7 @@ public class ExperienceCard {
     public ExperienceCard() {
     }
 
-    public ExperienceCard(String id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
+    public ExperienceCard(Integer id, String imgSrc, String imgAltEs, String imgAltEn, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String phEs,
             String phEn, Section section) {
         this.id = id;

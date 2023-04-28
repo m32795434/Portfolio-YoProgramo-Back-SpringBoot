@@ -124,7 +124,7 @@ public class Controller {
     }
 
     @DeleteMapping("/experience/deleteCard/{id}")
-    public void deleteExperienceCard(@PathVariable String id) {
+    public void deleteExperienceCard(@PathVariable Integer id) {
         cardServ.deleteExperienceCard(id);
     }
 
@@ -136,7 +136,7 @@ public class Controller {
 
     @GetMapping("/experienceCard/{id}")
     @ResponseBody
-    public ExperienceCard returnExperienceCard(@PathVariable String id) {
+    public ExperienceCard returnExperienceCard(@PathVariable Integer id) {
         return cardServ.returnExperienceCard(id);
     }
 
@@ -152,7 +152,7 @@ public class Controller {
     }
 
     @DeleteMapping("/skills/deleteCard/{id}")
-    public void deleteSkillsCard(@PathVariable String id) {
+    public void deleteSkillsCard(@PathVariable Integer id) {
         cardServ.deleteSkillsCard(id);
     }
 
@@ -164,7 +164,7 @@ public class Controller {
 
     @GetMapping("/skillsCard/{id}")
     @ResponseBody
-    public SkillsCard returnSkillsCard(@PathVariable String id) {
+    public SkillsCard returnSkillsCard(@PathVariable Integer id) {
         return cardServ.returnSkillsCard(id);
     }
 
@@ -181,7 +181,7 @@ public class Controller {
     }
 
     @DeleteMapping("/home/deleteCard/{id}")
-    public void deleteHomeCard(@PathVariable String id) {
+    public void deleteHomeCard(@PathVariable Integer id) {
         cardServ.deleteHomeCard(id);
     }
 
@@ -193,7 +193,7 @@ public class Controller {
 
     @GetMapping("/homeCard/{id}")
     @ResponseBody
-    public HomeCard returnHomeCard(@PathVariable String id) {
+    public HomeCard returnHomeCard(@PathVariable Integer id) {
         return cardServ.returnHomeCard(id);
     }
 
@@ -209,7 +209,7 @@ public class Controller {
     }
 
     @DeleteMapping("/qPD/deleteCard/{id}")
-    public void deleteQPDCard(@PathVariable String id) {
+    public void deleteQPDCard(@PathVariable Integer id) {
         cardServ.deleteQPDCard(id);
     }
 
@@ -221,7 +221,7 @@ public class Controller {
 
     @GetMapping("/qPDCard/{id}")
     @ResponseBody
-    public QPDCard returnQPDCard(@PathVariable String id) {
+    public QPDCard returnQPDCard(@PathVariable Integer id) {
         return cardServ.returnQPDCard(id);
     }
 
@@ -237,7 +237,7 @@ public class Controller {
     }
 
     @DeleteMapping("/projects/deleteCard/{id}")
-    public void deleteProjectsCard(@PathVariable String id) {
+    public void deleteProjectsCard(@PathVariable Integer id) {
         cardServ.deleteProjectsCard(id);
     }
 
@@ -249,7 +249,7 @@ public class Controller {
 
     @GetMapping("/ProjectsCard/{id}")
     @ResponseBody
-    public ProjectsCard returnProjectsCard(@PathVariable String id) {
+    public ProjectsCard returnProjectsCard(@PathVariable Integer id) {
         return cardServ.returnProjectsCard(id);
     }
 

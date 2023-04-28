@@ -40,7 +40,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public ExperienceCard returnExperienceCard(String id) {
+    public ExperienceCard returnExperienceCard(Integer id) {
         return experienceRepo.findById(id).orElse(null);
     }
 
@@ -55,8 +55,15 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void deleteExperienceCard(String id) {
+    public void deleteExperienceCard(Integer id) {
         experienceRepo.deleteById(id);
+        List<ExperienceCard> expCardArray = experienceRepo.findAll();
+        int size = expCardArray.size();
+        for (int index = 0; index < size; index++) {
+            ExperienceCard tempCard = expCardArray.get(index);
+            tempCard.setId(index + 1);
+            experienceRepo.save(tempCard);
+        }
     }
 
     @Override
@@ -65,7 +72,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public HomeCard returnHomeCard(String id) {
+    public HomeCard returnHomeCard(Integer id) {
         return homeRepo.findById(id).orElse(null);
     }
 
@@ -78,7 +85,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void deleteHomeCard(String id) {
+    public void deleteHomeCard(Integer id) {
         homeRepo.deleteById(id);
     }
 
@@ -95,7 +102,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void deleteQPDCard(String id) {
+    public void deleteQPDCard(Integer id) {
         qPDRepo.deleteById(id);
     }
 
@@ -105,12 +112,12 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public QPDCard returnQPDCard(String id) {
+    public QPDCard returnQPDCard(Integer id) {
         return qPDRepo.findById(id).orElse(null);
     }
 
     @Override
-    public SkillsCard returnSkillsCard(String id) {
+    public SkillsCard returnSkillsCard(Integer id) {
         return SkillsRepo.findById(id).orElse(null);
     }
 
@@ -129,7 +136,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void deleteSkillsCard(String id) {
+    public void deleteSkillsCard(Integer id) {
         SkillsRepo.deleteById(id);
     }
 
@@ -139,7 +146,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public ProjectsCard returnProjectsCard(String id) {
+    public ProjectsCard returnProjectsCard(Integer id) {
         return projectsRepo.findById(id).orElse(null);
     }
 
@@ -155,7 +162,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public void deleteProjectsCard(String id) {
+    public void deleteProjectsCard(Integer id) {
         projectsRepo.deleteById(id);
     }
 

@@ -3,10 +3,14 @@ package com.ManuelBravard.Portfolio.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +20,11 @@ import lombok.Setter;
 @Table(name = "projectscard")
 public class ProjectsCard {
     @Id
-    private String id;
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Min(value = 1)
+    @Max(value = 10)
+    private Integer id;
+
     private String vmp4Src;
     private String vwebSrc;
     private int startDateYear;
@@ -40,7 +48,7 @@ public class ProjectsCard {
     public ProjectsCard() {
     }
 
-    public ProjectsCard(String id, String vwebSrc, String vmp4Src, String phEs,
+    public ProjectsCard(Integer id, String vwebSrc, String vmp4Src, String phEs,
             String phEn, String h2En, String h2Es, Section section, int startDateYear,
             int startDateMonth, int startDateDay, int endDateYear, int endDateMonth, int endDateDay, String codeUrl,
             String deployUrl) {

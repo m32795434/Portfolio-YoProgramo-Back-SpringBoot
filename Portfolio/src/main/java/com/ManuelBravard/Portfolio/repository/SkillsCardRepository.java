@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 
 // @Repository
-public interface SkillsCardRepository extends JpaRepository<SkillsCard, String> {
+public interface SkillsCardRepository extends JpaRepository<SkillsCard, Integer> {
 
 }

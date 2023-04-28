@@ -3,10 +3,14 @@ package com.ManuelBravard.Portfolio.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +20,11 @@ import lombok.Setter;
 @Table(name = "homecard")
 public class HomeCard {
     @Id
-    private String id;
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Min(value = 1)
+    @Max(value = 10)
+    private Integer id;
+
     private String phEs;
     private String phEn;
 
@@ -28,7 +36,7 @@ public class HomeCard {
     public HomeCard() {
     }
 
-    public HomeCard(String id, String en, String es, Section section) {
+    public HomeCard(Integer id, String en, String es, Section section) {
         this.id = id;
         this.phEn = en;
         this.phEs = es;
