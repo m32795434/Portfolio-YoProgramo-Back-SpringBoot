@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "experiencecard")
-public class ExperienceCard {
+public class ExperienceCard implements Cloneable {
 
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,5 +63,15 @@ public class ExperienceCard {
         this.phEs = phEs;
         this.phEn = phEn;
         this.section = section;
+    }
+
+    // APPLY THIS TO OTHERS!
+    @Override
+    public ExperienceCard clone() {
+        try {
+            return (ExperienceCard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Unable to clone ExperienceCard", e);
+        }
     }
 }

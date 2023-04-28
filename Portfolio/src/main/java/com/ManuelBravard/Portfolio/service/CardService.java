@@ -57,14 +57,34 @@ public class CardService implements ICardService {
     // ------------------------------//FALTAN LOS OTROS!!!!!!!
     @Override
     public void deleteExperienceCard(Integer id) {
-        experienceRepo.deleteById(id);
-        List<ExperienceCard> expCardArray = experienceRepo.findAll();
-        int size = expCardArray.size();
-        for (int index = 0; index < size; index++) {
-            ExperienceCard tempCard = expCardArray.get(index);
-            tempCard.setId(index + 1);
-            experienceRepo.save(tempCard);
+        // experienceRepo.deleteById(id);
+        ExperienceCard cardToDelete = experienceRepo.findById(id).orElse(null);
+        if (cardToDelete == null) {
+            return;
         }
+        experienceRepo.delete(cardToDelete);// 4-1=3
+        // APPLY THIS TO OTHERS!
+        List<ExperienceCard> cardsToUpdate = experienceRepo.findAll();// 3
+        int size = cardsToUpdate.size();// 3 items, maxindex=2
+        for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
+            // if (card.getId() > id) {
+            ExperienceCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
+            copy.setId(i);// 2 //3
+            experienceRepo.save(copy);
+            // }
+            if (i == size) {// 3
+                ExperienceCard cardToDelete2 = experienceRepo.findById(i + 1).orElse(null);// 4
+                if (cardToDelete2 == null) {
+                    return;
+                }
+                experienceRepo.delete(cardToDelete2);
+            }
+        }
+        // for (int index = 0; index < size; index++) {
+        // ExperienceCard tempCard = cardsToUpdate .get(index);
+        // tempCard.setId(index + 1);
+        // experienceRepo.save(tempCard);
+        // }
     }
 
     @Override
