@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "projectscard")
-public class ProjectsCard {
+public class ProjectsCard implements Cloneable {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 1)
@@ -70,5 +70,14 @@ public class ProjectsCard {
         this.section = section;
         this.codeUrl = codeUrl;
         this.deployUrl = deployUrl;
+    }
+
+    @Override
+    public ProjectsCard clone() {
+        try {
+            return (ProjectsCard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Unable to clone ProjectsCard", e);
+        }
     }
 }

@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "skillscard")
-public class SkillsCard {
+public class SkillsCard implements Cloneable {
 
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +58,14 @@ public class SkillsCard {
         this.bkColor = bkColor;
         this.outStrokeColor = outStrokeColor;
         this.section = section;
+    }
+
+    @Override
+    public SkillsCard clone() {
+        try {
+            return (SkillsCard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Unable to clone SkillsCard", e);
+        }
     }
 }

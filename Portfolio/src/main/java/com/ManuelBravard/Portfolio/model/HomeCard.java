@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "homecard")
-public class HomeCard {
+public class HomeCard implements Cloneable {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 1)
@@ -43,6 +43,15 @@ public class HomeCard {
         this.phEn = en;
         this.phEs = es;
         this.section = section;
+    }
+
+    @Override
+    public HomeCard clone() {
+        try {
+            return (HomeCard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Unable to clone HomeCard", e);
+        }
     }
 
 }

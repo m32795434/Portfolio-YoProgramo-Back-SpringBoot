@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "qpdcard")
-public class QPDCard {
+public class QPDCard implements Cloneable {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 1)
@@ -67,5 +67,14 @@ public class QPDCard {
         this.h2En = h2En;
         this.h2Es = h2Es;
         this.section = section;
+    }
+
+    @Override
+    public QPDCard clone() {
+        try {
+            return (QPDCard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Unable to clone QPDCard", e);
+        }
     }
 }

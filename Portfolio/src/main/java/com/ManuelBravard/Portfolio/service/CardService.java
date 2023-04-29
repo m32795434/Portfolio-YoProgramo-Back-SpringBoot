@@ -54,37 +54,23 @@ public class CardService implements ICardService {
         experienceRepo.save(experienceCard);
     }
 
-    // ------------------------------//FALTAN LOS OTROS!!!!!!!
     @Override
     public void deleteExperienceCard(Integer id) {
-        // experienceRepo.deleteById(id);
         ExperienceCard cardToDelete = experienceRepo.findById(id).orElse(null);
         if (cardToDelete == null) {
             return;
         }
         experienceRepo.delete(cardToDelete);// 4-1=3
-        // APPLY THIS TO OTHERS!
         List<ExperienceCard> cardsToUpdate = experienceRepo.findAll();// 3
         int size = cardsToUpdate.size();// 3 items, maxindex=2
         for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
-            // if (card.getId() > id) {
             ExperienceCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
             copy.setId(i);// 2 //3
             experienceRepo.save(copy);
-            // }
             if (i == size) {// 3
-                ExperienceCard cardToDelete2 = experienceRepo.findById(i + 1).orElse(null);// 4
-                if (cardToDelete2 == null) {
-                    return;
-                }
-                experienceRepo.delete(cardToDelete2);
+                experienceRepo.deleteById(i + 1);// 4
             }
         }
-        // for (int index = 0; index < size; index++) {
-        // ExperienceCard tempCard = cardsToUpdate .get(index);
-        // tempCard.setId(index + 1);
-        // experienceRepo.save(tempCard);
-        // }
     }
 
     @Override
@@ -107,13 +93,20 @@ public class CardService implements ICardService {
 
     @Override
     public void deleteHomeCard(Integer id) {
-        homeRepo.deleteById(id);
-        List<HomeCard> expCardArray = homeRepo.findAll();
-        int size = expCardArray.size();
-        for (int index = 0; index < size; index++) {
-            HomeCard tempCard = expCardArray.get(index);
-            tempCard.setId(index + 1);
-            homeRepo.save(tempCard);
+        HomeCard cardToDelete = homeRepo.findById(id).orElse(null);
+        if (cardToDelete == null) {
+            return;
+        }
+        homeRepo.delete(cardToDelete);// 4-1=3
+        List<HomeCard> cardsToUpdate = homeRepo.findAll();// 3
+        int size = cardsToUpdate.size();// 3 items, maxindex=2
+        for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
+            HomeCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
+            copy.setId(i);// 2 //3
+            homeRepo.save(copy);
+            if (i == size) {// 3
+                homeRepo.deleteById(i + 1);// 4
+            }
         }
     }
 
@@ -131,13 +124,20 @@ public class CardService implements ICardService {
 
     @Override
     public void deleteQPDCard(Integer id) {
-        qPDRepo.deleteById(id);
-        List<QPDCard> expCardArray = qPDRepo.findAll();
-        int size = expCardArray.size();
-        for (int index = 0; index < size; index++) {
-            QPDCard tempCard = expCardArray.get(index);
-            tempCard.setId(index + 1);
-            qPDRepo.save(tempCard);
+        QPDCard cardToDelete = qPDRepo.findById(id).orElse(null);
+        if (cardToDelete == null) {
+            return;
+        }
+        qPDRepo.delete(cardToDelete);// 4-1=3
+        List<QPDCard> cardsToUpdate = qPDRepo.findAll();// 3
+        int size = cardsToUpdate.size();// 3 items, maxindex=2
+        for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
+            QPDCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
+            copy.setId(i);// 2 //3
+            qPDRepo.save(copy);
+            if (i == size) {// 3
+                qPDRepo.deleteById(i + 1);// 4
+            }
         }
     }
 
@@ -172,13 +172,20 @@ public class CardService implements ICardService {
 
     @Override
     public void deleteSkillsCard(Integer id) {
-        SkillsRepo.deleteById(id);
-        List<SkillsCard> expCardArray = SkillsRepo.findAll();
-        int size = expCardArray.size();
-        for (int index = 0; index < size; index++) {
-            SkillsCard tempCard = expCardArray.get(index);
-            tempCard.setId(index + 1);
-            SkillsRepo.save(tempCard);
+        SkillsCard cardToDelete = SkillsRepo.findById(id).orElse(null);
+        if (cardToDelete == null) {
+            return;
+        }
+        SkillsRepo.delete(cardToDelete);// 4-1=3
+        List<SkillsCard> cardsToUpdate = SkillsRepo.findAll();// 3
+        int size = cardsToUpdate.size();// 3 items, maxindex=2
+        for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
+            SkillsCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
+            copy.setId(i);// 2 //3
+            SkillsRepo.save(copy);
+            if (i == size) {// 3
+                SkillsRepo.deleteById(i + 1);// 4
+            }
         }
     }
 
@@ -205,13 +212,20 @@ public class CardService implements ICardService {
 
     @Override
     public void deleteProjectsCard(Integer id) {
-        projectsRepo.deleteById(id);
-        List<ProjectsCard> expCardArray = projectsRepo.findAll();
-        int size = expCardArray.size();
-        for (int index = 0; index < size; index++) {
-            ProjectsCard tempCard = expCardArray.get(index);
-            tempCard.setId(index + 1);
-            projectsRepo.save(tempCard);
+        ProjectsCard cardToDelete = projectsRepo.findById(id).orElse(null);
+        if (cardToDelete == null) {
+            return;
+        }
+        projectsRepo.delete(cardToDelete);// 4-1=3
+        List<ProjectsCard> cardsToUpdate = projectsRepo.findAll();// 3
+        int size = cardsToUpdate.size();// 3 items, maxindex=2
+        for (int i = id; i < size + 1; i++) {// si eliminamos la 2. arranca i=2 // i=3
+            ProjectsCard copy = cardsToUpdate.get(i - 1).clone();// card3, index=1// card4, i=2
+            copy.setId(i);// 2 //3
+            projectsRepo.save(copy);
+            if (i == size) {// 3
+                projectsRepo.deleteById(i + 1);// 4
+            }
         }
     }
 
