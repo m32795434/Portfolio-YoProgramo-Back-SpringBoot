@@ -22,12 +22,15 @@ import lombok.Setter;
 public class HomeCard implements Cloneable {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 1)
+    @Column(nullable = false)
     @Min(value = 1, message = "The card id should be greater than 0")
     @Max(value = 9, message = "The card id should be lower than 9")
     private Integer id;
 
+    @Column(columnDefinition = "text")
     private String phEs;
+
+    @Column(columnDefinition = "text")
     private String phEn;
 
     @JsonIgnore

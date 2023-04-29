@@ -69,6 +69,7 @@ public class ExperienceCard implements Cloneable {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Section_id")
+    @Column(nullable = false)
     private Section section;
 
     public ExperienceCard() {
