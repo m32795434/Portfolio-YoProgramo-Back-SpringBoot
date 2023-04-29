@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,26 +24,39 @@ public class SkillsCard implements Cloneable {
 
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 1)
+    @Column(nullable = false)
     @Min(value = 1, message = "The card id should be greater than 0")
     @Max(value = 9, message = "The card id should be lower than 9")
     private Integer id;
 
+    @Column(length = 150)
+    @Size(max = 150)
     private String imgSrc;
 
+    @Column(length = 100, nullable = false)
+    @Size(max = 100)
     private String imgAltEs;
 
+    @Column(length = 100, nullable = false)
+    @Size(max = 100)
     private String imgAltEn;
 
+    @Column(nullable = false)
+    @Min(value = 1, message = "The value should be greater than 0")
+    @Max(value = 100, message = "The value should be lower than 101")
     private int value;
 
+    @Column(length = 10)
+    @Size(max = 10)
     private String bkColor;
 
+    @Column(length = 10)
+    @Size(max = 10)
     private String outStrokeColor;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "Section_id")
+    @JoinColumn(name = "Section_id", nullable = false)
     private Section section;
 
     public SkillsCard() {

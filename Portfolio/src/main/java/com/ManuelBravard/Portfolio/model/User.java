@@ -30,7 +30,7 @@ public class User {
     private String level;
 
     @Column(nullable = false, length = 50)
-    @Email
+    @Email(message = "not a valid email type")
     private String userName;
 
     @Column(nullable = false, length = 30)
