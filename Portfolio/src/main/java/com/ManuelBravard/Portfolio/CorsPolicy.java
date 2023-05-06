@@ -10,7 +10,7 @@ public class CorsPolicy implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://manuel-bravard.web.app/")
+                .allowedOrigins("https://manuel-bravard.web.app/", "https://manuel-bravard.firebaseapp.com/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(false)
