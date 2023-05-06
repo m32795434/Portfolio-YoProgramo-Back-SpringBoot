@@ -10,7 +10,9 @@ public class CorsPolicy implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://manuel-bravard.web.app/", "https://manuel-bravard.firebaseapp.com/")
+                // .allowedOrigins("https://manuel-bravard.web.app/",
+                // "https://manuel-bravard.firebaseapp.com/")
+                .allowedOrigins("http://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(false)

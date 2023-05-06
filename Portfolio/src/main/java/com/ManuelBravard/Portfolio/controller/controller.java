@@ -24,7 +24,7 @@ import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
-import com.ManuelBravard.Portfolio.model.User;
+import com.ManuelBravard.Portfolio.model.Users;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
 import com.ManuelBravard.Portfolio.service.IUsersService;
@@ -261,7 +261,7 @@ public class Controller {
 
     @PostMapping("/login")
     @ResponseBody
-    public Boolean checkAuth(@RequestBody User user) {
+    public Boolean checkAuth(@RequestBody Users user) {
         return userServ.checkAuth(user);
     }
 }
