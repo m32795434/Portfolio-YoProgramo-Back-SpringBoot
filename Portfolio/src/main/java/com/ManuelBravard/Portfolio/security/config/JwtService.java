@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.ManuelBravard.Portfolio.security.user.User;
+
 @Service
 public class JwtService {
 
@@ -34,14 +36,10 @@ public class JwtService {
     return claimsResolver.apply(claims);
   }
 
-  public String generateToken(UserDetails userDetails) {
-    return generateToken(new HashMap<>(), userDetails);
-  }
-
-  public String generateToken(
-      Map<String, Object> extraClaims,
-      UserDetails userDetails) {
-    return buildToken(extraClaims, userDetails, jwtExpiration);
+  public String generateToken(User user) {
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("role", user.getRole().name()); // Agregar el rol del usuario
+    return buildToken(claims, user, jwtExpiration);
   }
 
   public String generateRefreshToken(
