@@ -14,30 +14,45 @@ import org.springframework.web.bind.annotation.RestController;
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
-    @GetMapping
-    @PreAuthorize("hasAuthority('admin:read')")
-    public String get() {
-        return "GET:: admin controller";
-    }
-
-    @PostMapping
-    @PreAuthorize("hasAuthority('admin:create')")
-    @Hidden
-    public String post() {
-        return "POST:: admin controller";
-    }
-
-    @PutMapping
-    @PreAuthorize("hasAuthority('admin:update')")
-    @Hidden
-    public String put() {
-        return "PUT:: admin controller";
-    }
-
-    @DeleteMapping
-    @PreAuthorize("hasAuthority('admin:delete')")
-    @Hidden
-    public String delete() {
-        return "DELETE:: admin controller";
-    }
 }
+
+// SECTIONS
+
+// @PostMapping("/new/section")
+// public void createSection(@RequestBody Section sec) {
+// sectionServ.saveSection(sec);
+// }
+
+// @DeleteMapping("/delete/section/{id}")
+// public void deleteSection(@PathVariable String id) {
+// sectionServ.deleteSection(id);
+// }
+
+// other previous methods
+
+// @GetMapping
+// @PreAuthorize("hasAuthority('admin:read')")
+// public String get() {
+// return "GET:: admin controller";
+// }
+
+// @PostMapping
+// @PreAuthorize("hasAuthority('admin:create')")
+// @Hidden
+// public String post() {
+// return "POST:: admin controller";
+// }
+
+// @PutMapping
+// @PreAuthorize("hasAuthority('admin:update')")
+// @Hidden
+// public String put() {
+// return "PUT:: admin controller";
+// }
+
+// @DeleteMapping
+// @PreAuthorize("hasAuthority('admin:delete')")
+// @Hidden
+// public String delete() {
+// return "DELETE:: admin controller";
+// }

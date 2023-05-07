@@ -39,30 +39,7 @@ public class Controller {
     @Autowired
     private IUsersService userServ;
 
-    // SECTIONS
-    @PostMapping("/new/section")
-    public void createSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
-
-    @DeleteMapping("/delete/section/{id}")
-    public void deleteSection(@PathVariable String id) {
-        sectionServ.deleteSection(id);
-    }
-
-    @GetMapping("/allsections")
-    @ResponseBody
-    public List<Section> returnAllSections() {
-        return sectionServ.returnAllSections();
-    }
-
-    @GetMapping("/section/{id}")
-    @ResponseBody
-    public Section returnSection(@PathVariable String id) {
-        return sectionServ.returnSection(id);
-    }
-
-    @GetMapping("/completeHomeSection")
+    @GetMapping("/getComplete/completeHomeSection")
     @ResponseBody
     public CompleteHomeSection returnCompleteHomeSection() {
         Section section = sectionServ.returnSection("home");
@@ -71,7 +48,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeExperienceSection")
+    @GetMapping("/getComplete/completeExperienceSection")
     @ResponseBody
     public CompleteExperienceSection returnCompleteExperienceSection() {
         Section section = sectionServ.returnSection("experience");
@@ -80,7 +57,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeQPDSection")
+    @GetMapping("/getComplete/completeQPDSection")
     @ResponseBody
     public CompleteQPDSection returnCompleteQPDSection() {
         Section section = sectionServ.returnSection("qPD");
@@ -89,7 +66,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeSkillsSection")
+    @GetMapping("/getComplete/completeSkillsSection")
     @ResponseBody
     public CompleteSkillsSection returnCompleteSkillsSection() {
         Section section = sectionServ.returnSection("skills");
@@ -98,7 +75,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeProjectsSection")
+    @GetMapping("/getComplete/completeProjectsSection")
     @ResponseBody
     public CompleteProjectsSection returnCompleteProjectsSection() {
         Section section = sectionServ.returnSection("projects");
@@ -260,6 +237,20 @@ public class Controller {
         return userServ.checkAuth(user);
     }
 }
+
+// other previous methods
+// @GetMapping("/allsections")
+// @ResponseBody
+// public List<Section> returnAllSections() {
+// return sectionServ.returnAllSections();
+// }
+
+// @GetMapping("/section/{id}")
+// @ResponseBody
+// public Section returnSection(@PathVariable String id) {
+// return sectionServ.returnSection(id);
+// }
+
 // List<Section> sectionList = new ArrayList<Section>();
 
 // GET
