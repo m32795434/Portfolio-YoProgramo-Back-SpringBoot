@@ -64,12 +64,21 @@ public class SecurityConfiguration {
         // No es necesario definir hasAnyAuthority() si solo debo verificar los roles de
         // los usuarios. hasAnyRole() es una forma abreviada de hasAnyAuthority("ROLE_"
         // + role) que se usa para verificar roles específicos
-        .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
+        .requestMatchers("/api/v1/admin/**").hasAnyRole(ADMIN.name())
+        .requestMatchers("/api/v1/management/**").hasAnyRole(MANAGER.name(), ADMIN.name())
 
-        .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
-        .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
-        .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
-        .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
+        // .requestMatchers(GET,
+        // "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(),
+        // MANAGER_READ.name())
+        // .requestMatchers(POST,
+        // "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(),
+        // MANAGER_CREATE.name())
+        // .requestMatchers(PUT,
+        // "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(),
+        // MANAGER_UPDATE.name())
+        // .requestMatchers(DELETE,
+        // "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(),
+        // MANAGER_DELETE.name())
 
         /*
          * .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())

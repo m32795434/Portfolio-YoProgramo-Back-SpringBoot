@@ -45,11 +45,6 @@ public class Controller {
         sectionServ.saveSection(sec);
     }
 
-    @PutMapping("/update/section")
-    public void updateSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
-
     @DeleteMapping("/delete/section/{id}")
     public void deleteSection(@PathVariable String id) {
         sectionServ.deleteSection(id);
