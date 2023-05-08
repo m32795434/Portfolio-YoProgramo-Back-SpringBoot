@@ -25,12 +25,12 @@ public class UsersService implements IUsersService {
         return false;
     }
 
-    @Override
-    public void saveUser(UpdateUserAndPassObj user) {
-        Users tempUser = userRepo.findById(user.getId()).orElse(null);
-        tempUser.setUserName(user.getUserName());
-        tempUser.setUserPass(user.getUserPass());
-        userRepo.save(tempUser);
-    }
+    // // @Override
+    // // public void saveUser(UpdateUserAndPassObj user) {
+    // // Users tempUser = userRepo.findById(user.getId()).orElse(null);
+    // // tempUser.setUserName(user.getUserName());
+    // // tempUser.setUserPass(user.getUserPass());
+    // // userRepo.save(tempUser);
+    // // }
 
 }

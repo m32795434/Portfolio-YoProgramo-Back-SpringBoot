@@ -6,5 +6,5 @@ import com.ManuelBravard.Portfolio.model.Users;
 public interface IUsersService {
     public boolean checkAuth(Users user);
 
-    public void saveUser(UpdateUserAndPassObj user);
+    // public void saveUser(UpdateUserAndPassObj user);
 }

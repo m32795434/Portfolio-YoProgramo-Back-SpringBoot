@@ -43,6 +43,7 @@ com\ManuelBravard\Portfolio\security\demo\DemoController.class
 com\ManuelBravard\Portfolio\security\user\Permission.class
 com\ManuelBravard\Portfolio\repository\ProjectsCardRepository.class
 com\ManuelBravard\Portfolio\model\HomeCard.class
+com\ManuelBravard\Portfolio\model\UpdateUserAndPassObj$UpdateUserAndPassObjBuilder.class
 com\ManuelBravard\Portfolio\model\UpdateUserAndPassObj.class
 com\ManuelBravard\Portfolio\security\config\OpenApiConfig.class
 com\ManuelBravard\Portfolio\repository\SectionRepository.class

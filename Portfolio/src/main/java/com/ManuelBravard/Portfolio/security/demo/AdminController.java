@@ -1,10 +1,12 @@
 package com.ManuelBravard.Portfolio.security.demo;
 
 import io.swagger.v3.oas.annotations.Hidden;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,11 @@ import com.ManuelBravard.Portfolio.model.HomeCard;
 import com.ManuelBravard.Portfolio.model.ProjectsCard;
 import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
+import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
+import com.ManuelBravard.Portfolio.security.auth.AuthenticationResponse;
+import com.ManuelBravard.Portfolio.security.auth.AuthenticationService;
+import com.ManuelBravard.Portfolio.security.auth.RegisterRequest;
+import com.ManuelBravard.Portfolio.security.user.UserRepository;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
 import com.ManuelBravard.Portfolio.service.IUsersService;
@@ -28,14 +35,15 @@ import com.ManuelBravard.Portfolio.service.IUsersService;
 @RestController
 @RequestMapping("/api/v1/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@RequiredArgsConstructor
 public class AdminController {
-
     @Autowired
     private ISectionService sectionServ;
     @Autowired
     private ICardService cardServ;
     @Autowired
-    private IUsersService userServ;
+
+    private final AuthenticationService service;
 
     // ExperienceCard
     @PostMapping("/experience/createCard")
@@ -176,6 +184,14 @@ public class AdminController {
     @ResponseBody
     public ProjectsCard returnProjectsCard(@PathVariable Integer id) {
         return cardServ.returnProjectsCard(id);
+    }
+
+    // USER
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponse> register(
+            @RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(service.register(request));
     }
 
 }

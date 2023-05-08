@@ -3,6 +3,8 @@ package com.ManuelBravard.Portfolio.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,11 +25,17 @@ import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
 import com.ManuelBravard.Portfolio.model.Users;
+import com.ManuelBravard.Portfolio.security.config.JwtService;
+import com.ManuelBravard.Portfolio.security.user.UserRepository;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
 import com.ManuelBravard.Portfolio.service.IUsersService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class Controller {
 
     @Autowired
@@ -36,6 +44,11 @@ public class Controller {
     private ICardService cardServ;
     @Autowired
     private IUsersService userServ;
+
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+
+    private final UserRepository repository;
 
     @GetMapping("/getComplete/completeHomeSection")
     @ResponseBody
@@ -83,6 +96,32 @@ public class Controller {
     }
 
     // USERS
+    // Needs token!
+    @PutMapping("/api/v1/mod/user")
+    public String saveUser(
+            HttpServletRequest request,
+            @RequestBody UpdateUserAndPassObj user) {
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String token;
+        final String userEmail;
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return "No Authorized";
+        }
+        token = authHeader.substring(7);
+        userEmail = jwtService.extractUsername(token);
+        if (userEmail != null) {
+            var tempUser = this.repository.findByEmail(userEmail)
+                    .orElseThrow();
+            if (jwtService.isTokenValid(token, tempUser)) {
+                tempUser.setPassword(passwordEncoder.encode(user.getPassword()));
+                repository.save(tempUser);
+                return "Password saved";
+            }
+            return "User and token mismatch";
+        }
+        return "No username provided";
+    }
+
     // @PutMapping("/user")
     // public void saveUser(@RequestBody UpdateUserAndPassObj user) {
     // userServ.saveUser(user);
