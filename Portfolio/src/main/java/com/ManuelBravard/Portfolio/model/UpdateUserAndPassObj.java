@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateUserAndPassObj {
-    private String email;
+    // private String email;
     private String password;
 }
