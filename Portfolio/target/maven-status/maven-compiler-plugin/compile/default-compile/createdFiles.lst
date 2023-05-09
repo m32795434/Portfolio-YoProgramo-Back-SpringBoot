@@ -9,7 +9,6 @@ com\ManuelBravard\Portfolio\model\Section.class
 com\ManuelBravard\Portfolio\repository\ExperienceCardRepository.class
 com\ManuelBravard\Portfolio\model\AuthRequest.class
 com\ManuelBravard\Portfolio\repository\UsersRepository.class
-com\ManuelBravard\Portfolio\CorsPolicy.class
 com\ManuelBravard\Portfolio\security\demo\ManagementController.class
 com\ManuelBravard\Portfolio\service\UsersService.class
 com\ManuelBravard\Portfolio\PortfolioApplication.class
