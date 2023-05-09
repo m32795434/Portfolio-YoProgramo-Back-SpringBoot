@@ -119,7 +119,7 @@ public class Controller {
                 repository.save(tempUser);
                 HttpHeaders responseHeaders = new HttpHeaders();
                 responseHeaders.set("Content-Type", "text/plain");
-                return ResponseEntity.ok().headers(responseHeaders).body("{\"message\":\"Password saved\"}");
+                return ResponseEntity.ok().headers(responseHeaders).body("Password saved");
             }
             return ResponseEntity.badRequest().body("User and token mismatch");
         }
