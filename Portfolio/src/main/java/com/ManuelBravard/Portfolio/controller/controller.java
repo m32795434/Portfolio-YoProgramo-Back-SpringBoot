@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -98,14 +100,14 @@ public class Controller {
     // USERS
     // Needs token!
     @PutMapping("/api/v1/mod/user")
-    public String saveUser(
+    public ResponseEntity<String> saveUser(
             HttpServletRequest request,
             @RequestBody UpdateUserAndPassObj user) {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String token;
         final String userEmail;
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return "No Authorized";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No Authorized");
         }
         token = authHeader.substring(7);
         userEmail = jwtService.extractUsername(token);
@@ -115,11 +117,13 @@ public class Controller {
             if (jwtService.isTokenValid(token, tempUser)) {
                 tempUser.setPassword(passwordEncoder.encode(user.getPassword()));
                 repository.save(tempUser);
-                return "Password saved";
+                HttpHeaders responseHeaders = new HttpHeaders();
+                responseHeaders.set("Content-Type", "text/plain");
+                return ResponseEntity.ok().headers(responseHeaders).body("{\"message\":\"Password saved\"}");
             }
-            return "User and token mismatch";
+            return ResponseEntity.badRequest().body("User and token mismatch");
         }
-        return "No username provided";
+        return ResponseEntity.badRequest().body("No username provided");
     }
 
     // @PutMapping("/user")
