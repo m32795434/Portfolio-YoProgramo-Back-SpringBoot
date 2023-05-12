@@ -114,7 +114,9 @@ public class SecurityConfiguration {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+    configuration.setAllowedOrigins(
+        // configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        Arrays.asList("https://manuel-bravard-dev.web.app/", "https://manuel-bravard-dev.firebaseapp.com/"));
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
     configuration.setAllowedHeaders(Arrays.asList("*"));
     configuration.setAllowCredentials(false);
