@@ -3,9 +3,11 @@ package com.ManuelBravard.Portfolio.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,12 +26,18 @@ import com.ManuelBravard.Portfolio.model.QPDCard;
 import com.ManuelBravard.Portfolio.model.Section;
 import com.ManuelBravard.Portfolio.model.SkillsCard;
 import com.ManuelBravard.Portfolio.model.UpdateUserAndPassObj;
-import com.ManuelBravard.Portfolio.model.User;
+import com.ManuelBravard.Portfolio.model.Users;
+import com.ManuelBravard.Portfolio.security.config.JwtService;
+import com.ManuelBravard.Portfolio.security.user.UserRepository;
 import com.ManuelBravard.Portfolio.service.ICardService;
 import com.ManuelBravard.Portfolio.service.ISectionService;
 import com.ManuelBravard.Portfolio.service.IUsersService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class Controller {
 
     @Autowired
@@ -39,35 +47,12 @@ public class Controller {
     @Autowired
     private IUsersService userServ;
 
-    // SECTIONS
-    @PostMapping("/new/section")
-    public void createSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
 
-    @PutMapping("/update/section")
-    public void updateSection(@RequestBody Section sec) {
-        sectionServ.saveSection(sec);
-    }
+    private final UserRepository repository;
 
-    @DeleteMapping("/delete/section/{id}")
-    public void deleteSection(@PathVariable String id) {
-        sectionServ.deleteSection(id);
-    }
-
-    @GetMapping("/allsections")
-    @ResponseBody
-    public List<Section> returnAllSections() {
-        return sectionServ.returnAllSections();
-    }
-
-    @GetMapping("/section/{id}")
-    @ResponseBody
-    public Section returnSection(@PathVariable String id) {
-        return sectionServ.returnSection(id);
-    }
-
-    @GetMapping("/completeHomeSection")
+    @GetMapping("/getComplete/completeHomeSection")
     @ResponseBody
     public CompleteHomeSection returnCompleteHomeSection() {
         Section section = sectionServ.returnSection("home");
@@ -76,7 +61,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeExperienceSection")
+    @GetMapping("/getComplete/completeExperienceSection")
     @ResponseBody
     public CompleteExperienceSection returnCompleteExperienceSection() {
         Section section = sectionServ.returnSection("experience");
@@ -85,7 +70,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeQPDSection")
+    @GetMapping("/getComplete/completeQPDSection")
     @ResponseBody
     public CompleteQPDSection returnCompleteQPDSection() {
         Section section = sectionServ.returnSection("qPD");
@@ -94,7 +79,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeSkillsSection")
+    @GetMapping("/getComplete/completeSkillsSection")
     @ResponseBody
     public CompleteSkillsSection returnCompleteSkillsSection() {
         Section section = sectionServ.returnSection("skills");
@@ -103,7 +88,7 @@ public class Controller {
         return completeSec;
     }
 
-    @GetMapping("/completeProjectsSection")
+    @GetMapping("/getComplete/completeProjectsSection")
     @ResponseBody
     public CompleteProjectsSection returnCompleteProjectsSection() {
         Section section = sectionServ.returnSection("projects");
@@ -112,159 +97,60 @@ public class Controller {
         return completeSec;
     }
 
-    // ExperienceCard
-    @PostMapping("/experience/createCard")
-    public void createExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
-    }
-
-    @PutMapping("/experience/updateCard")
-    public void updateExperienceCard(@RequestBody ExperienceCard card) {
-        cardServ.saveExperienceCard(card);
-    }
-
-    @DeleteMapping("/experience/deleteCard/{id}")
-    public void deleteExperienceCard(@PathVariable Integer id) {
-        cardServ.deleteExperienceCard(id);
-    }
-
-    @GetMapping("/allExperienceCards")
-    @ResponseBody
-    public List<ExperienceCard> returnAllExperienceCards() {
-        return cardServ.returnAllExperienceCards();
-    }
-
-    @GetMapping("/experienceCard/{id}")
-    @ResponseBody
-    public ExperienceCard returnExperienceCard(@PathVariable Integer id) {
-        return cardServ.returnExperienceCard(id);
-    }
-
-    // SkillsCard
-    @PostMapping("/skills/createCard")
-    public void createSkillsCard(@RequestBody SkillsCard card) {
-        cardServ.saveSkillsCard(card);
-    }
-
-    @PutMapping("/skills/updateCard")
-    public void updateSkillsCard(@RequestBody SkillsCard card) {
-        cardServ.saveSkillsCard(card);
-    }
-
-    @DeleteMapping("/skills/deleteCard/{id}")
-    public void deleteSkillsCard(@PathVariable Integer id) {
-        cardServ.deleteSkillsCard(id);
-    }
-
-    @GetMapping("/allSkillsCards")
-    @ResponseBody
-    public List<SkillsCard> returnAllSkillsCards() {
-        return cardServ.returnAllSkillsCards();
-    }
-
-    @GetMapping("/skillsCard/{id}")
-    @ResponseBody
-    public SkillsCard returnSkillsCard(@PathVariable Integer id) {
-        return cardServ.returnSkillsCard(id);
-    }
-
-    // homeCard
-
-    @PostMapping("/home/createCard")
-    public void createHomeCard(@RequestBody HomeCard card) {
-        cardServ.saveHomeCard(card);
-    }
-
-    @PutMapping("/home/updateCard")
-    public void updateHomeCard(@RequestBody HomeCard card) {
-        cardServ.saveHomeCard(card);
-    }
-
-    @DeleteMapping("/home/deleteCard/{id}")
-    public void deleteHomeCard(@PathVariable Integer id) {
-        cardServ.deleteHomeCard(id);
-    }
-
-    @GetMapping("/allHomeCards")
-    @ResponseBody
-    public List<HomeCard> returnAllHomeCards() {
-        return cardServ.returnAllHomeCards();
-    }
-
-    @GetMapping("/homeCard/{id}")
-    @ResponseBody
-    public HomeCard returnHomeCard(@PathVariable Integer id) {
-        return cardServ.returnHomeCard(id);
-    }
-
-    // QPDCard
-    @PostMapping("/qPD/createCard")
-    public void createQPDCard(@RequestBody QPDCard card) {
-        cardServ.saveQPDCard(card);
-    }
-
-    @PutMapping("/qPD/updateCard")
-    public void updateQPDCard(@RequestBody QPDCard card) {
-        cardServ.saveQPDCard(card);
-    }
-
-    @DeleteMapping("/qPD/deleteCard/{id}")
-    public void deleteQPDCard(@PathVariable Integer id) {
-        cardServ.deleteQPDCard(id);
-    }
-
-    @GetMapping("/allQPDCards")
-    @ResponseBody
-    public List<QPDCard> returnAllQPDCards() {
-        return cardServ.returnAllQPDCards();
-    }
-
-    @GetMapping("/qPDCard/{id}")
-    @ResponseBody
-    public QPDCard returnQPDCard(@PathVariable Integer id) {
-        return cardServ.returnQPDCard(id);
-    }
-
-    // PROJECTS
-    @PostMapping("/projects/createCard")
-    public void createProjectsCard(@RequestBody ProjectsCard card) {
-        cardServ.saveProjectsCard(card);
-    }
-
-    @PutMapping("/projects/updateCard")
-    public void updateProjectsCard(@RequestBody ProjectsCard card) {
-        cardServ.saveProjectsCard(card);
-    }
-
-    @DeleteMapping("/projects/deleteCard/{id}")
-    public void deleteProjectsCard(@PathVariable Integer id) {
-        cardServ.deleteProjectsCard(id);
-    }
-
-    @GetMapping("/allProjectsCards")
-    @ResponseBody
-    public List<ProjectsCard> returnAllProjectsCards() {
-        return cardServ.returnAllProjectsCards();
-    }
-
-    @GetMapping("/ProjectsCard/{id}")
-    @ResponseBody
-    public ProjectsCard returnProjectsCard(@PathVariable Integer id) {
-        return cardServ.returnProjectsCard(id);
-    }
-
     // USERS
-    @PutMapping("/user")
-    public void saveUser(@RequestBody UpdateUserAndPassObj user) {
-        userServ.saveUser(user);
+    // Needs token!
+    @PutMapping("/api/v1/mod/user")
+    public ResponseEntity<String> saveUser(
+            HttpServletRequest request,
+            @RequestBody UpdateUserAndPassObj user) {
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String token;
+        final String userEmail;
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No Authorized");
+        }
+        token = authHeader.substring(7);
+        userEmail = jwtService.extractUsername(token);
+        if (userEmail != null) {
+            var tempUser = this.repository.findByEmail(userEmail)
+                    .orElseThrow();
+            if (jwtService.isTokenValid(token, tempUser)) {
+                tempUser.setPassword(passwordEncoder.encode(user.getPassword()));
+                repository.save(tempUser);
+                HttpHeaders responseHeaders = new HttpHeaders();
+                responseHeaders.set("Content-Type", "text/plain");
+                return ResponseEntity.ok().headers(responseHeaders).body("Password saved");
+            }
+            return ResponseEntity.badRequest().body("User and token mismatch");
+        }
+        return ResponseEntity.badRequest().body("No username provided");
     }
 
-    @PostMapping("/login")
-    @ResponseBody
-    public Boolean checkAuth(@RequestBody User user) {
-        return userServ.checkAuth(user);
-    }
+    // @PutMapping("/user")
+    // public void saveUser(@RequestBody UpdateUserAndPassObj user) {
+    // userServ.saveUser(user);
+    // }
+
+    // @PostMapping("/login")
+    // @ResponseBody
+    // public Boolean checkAuth(@RequestBody Users user) {
+    // return userServ.checkAuth(user);
+    // }
 }
+
+// other previous methods
+// @GetMapping("/allsections")
+// @ResponseBody
+// public List<Section> returnAllSections() {
+// return sectionServ.returnAllSections();
+// }
+
+// @GetMapping("/section/{id}")
+// @ResponseBody
+// public Section returnSection(@PathVariable String id) {
+// return sectionServ.returnSection(id);
+// }
+
 // List<Section> sectionList = new ArrayList<Section>();
 
 // GET

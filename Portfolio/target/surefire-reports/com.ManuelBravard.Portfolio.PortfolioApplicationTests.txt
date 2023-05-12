@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ManuelBravard.Portfolio.PortfolioApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.04 s - in com.ManuelBravard.Portfolio.PortfolioApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 128.32 s - in com.ManuelBravard.Portfolio.PortfolioApplicationTests
