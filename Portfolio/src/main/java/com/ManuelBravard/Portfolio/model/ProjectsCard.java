@@ -26,12 +26,12 @@ public class ProjectsCard implements Cloneable {
     @Max(value = 9, message = "The card id should be lower than 9")
     private Integer id;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String vmp4Src;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String vwebSrc;
 
     @Column(nullable = false)
@@ -64,12 +64,12 @@ public class ProjectsCard implements Cloneable {
     @Size(max = 100)
     private String h2Es;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String codeUrl;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String deployUrl;
 
     @JsonIgnore

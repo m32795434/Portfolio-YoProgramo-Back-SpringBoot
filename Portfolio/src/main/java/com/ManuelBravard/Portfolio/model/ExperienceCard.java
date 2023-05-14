@@ -29,8 +29,8 @@ public class ExperienceCard implements Cloneable {
     @Max(value = 9, message = "The card id should be lower than 9")
     private Integer id;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String imgSrc;
 
     @Column(length = 100)

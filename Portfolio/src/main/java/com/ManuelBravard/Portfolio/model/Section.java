@@ -23,12 +23,12 @@ public class Section {
     @Size(min = 1, max = 20)
     private String id;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String imgMobile;
 
-    @Column(length = 150)
-    @Size(max = 150)
+    @Column(length = 200)
+    @Size(max = 200)
     private String imgDesktop;
 
     @Column(length = 200)
