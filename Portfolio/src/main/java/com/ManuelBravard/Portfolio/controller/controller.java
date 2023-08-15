@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,6 +54,15 @@ public class Controller {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRepository repository;
+
+    @RequestMapping(value = "/health", method = RequestMethod.HEAD)
+    public ResponseEntity<Void> checkBackendStatus() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "http://www.uptimerobot.com/");
+        headers.add("Access-Control-Allow-Methods", "HEAD");
+        headers.setContentType(MediaType.TEXT_HTML);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
 
     @GetMapping("/getComplete/completeHomeSection")
     @ResponseBody

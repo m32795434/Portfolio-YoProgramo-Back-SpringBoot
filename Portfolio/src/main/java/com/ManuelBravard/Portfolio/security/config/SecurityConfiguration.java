@@ -53,7 +53,7 @@ public class SecurityConfiguration {
         .disable()
         .authorizeHttpRequests()
         .requestMatchers(
-            "/getComplete/**", "/api/v1/auth/**",
+            "/getComplete/**", "/api/v1/auth/**", "/health",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -116,8 +116,9 @@ public class SecurityConfiguration {
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowedOrigins(
         // configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-        Arrays.asList("https://manuel-bravard-dev.web.app/", "https://manuel-bravard-dev.firebaseapp.com/"));
-    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        Arrays.asList("https://manuel-bravard-dev.web.app/",
+            "https://manuel-bravard-dev.firebaseapp.com/"));
+    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD"));
     configuration.setAllowedHeaders(Arrays.asList("*"));
     configuration.setAllowCredentials(false);
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
